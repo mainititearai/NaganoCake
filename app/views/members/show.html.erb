@@ -1,6 +1,7 @@
     <%= render 'layouts/members_header' %>
 
     <div class="container">
+      <h3>マイページ</h3>
       <div class="row">
         <h4>登録情報</h4>
 
@@ -11,49 +12,56 @@
           <%= link_to "パスワードを変更する", edit_member_password_path(@member), class:"col-3
           4 btn btn-primary glyphicon glyphicon-wrench" %>
         </span>
-
+        <p> </p>
+        <div class="col-xs-7">
         <table class="table table-bordered">
           <tbody>
             <tr>
-              <th>氏名</th>
-              <td>岩崎あや</td>
+              <th width="20%">氏名</th>
+              <td width="80%"><%= @member.last_name %> <%= @member.first_name %></td>
             </tr>
             <tr>
               <th>カナ</th>
-              <td>イワサキアヤ</td>
+              <td><%= @member.last_name_kana %> <%= @member.first_name_kana %></td>
             </tr>
             <tr>
               <th>郵便番号</th>
-              <td>7793121</td>
+              <td><%= @member.postcode %></td>
             </tr>
             <tr>
               <th>住所</th>
-              <td>大阪府大阪市平野区加美正覚寺1-1-13</td>
+              <td><%= @member.address %></td>
             </tr>
             <tr>
               <th>電話番号</th>
-              <td>09028248927</td>
+              <td><%= @member.phone_number %></td>
             </tr>
             <tr>
               <th>メールアドレス</th>
-              <td>yunicipal@gmail.com</td>
+              <td><%= @member.email %></td>
             </tr>
             <tr>
             </tr>
           </tbody>
         </table>
+      </div>
+    </div>
 
+      <div class="row">
+      <div class="col-xs-3">
         <table class="table table-borderless">
           <tr>
-            <th>配送先</th>
-            <th><%= link_to "一覧を見る", member_shipping_addresses_path(@member), class:"col-3 btn btn-primary glyphicon glyphicon-wrench" %>
+            <th width=30%>配送先</th>
+            <th width=70%><%= link_to "一覧を見る", member_shipping_addresses_path, class:"col-3 btn btn-primary glyphicon glyphicon-wrench" %>
             </th>
           </tr>
 
           <tr>
             <th>注文履歴</th>
-            <th><%= link_to "一覧を見る", member_orders_path(@member), class:"col-3 btn btn-primary glyphicon glyphicon-wrench" %></th>
+            <th><%= link_to "一覧を見る", member_orders_path, class:"col-3 btn btn-primary glyphicon glyphicon-wrench" %></th>
           </tr>
         </table>
+      </div>
+      </div>
       </div>
     </div>
