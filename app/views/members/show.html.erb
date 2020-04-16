@@ -1,58 +1,59 @@
-        <div class="row">
-                  <h4>登録情報</h4>
+    <%= render 'layouts/members_header' %>
 
-                  <span>
-                  <%= link_to "編集する", edit_member_path(@member), class:"col-3 btn btn-primary glyphicon glyphicon-wrench" %>
-                  </span>
-                  <span>
-                    <%= link_to "パスワードを変更する", edit_member_password_path(@member), class:"col-3
-                    4 btn btn-primary glyphicon glyphicon-wrench" %>
-                  </span>
+    <div class="container">
+      <div class="row">
+        <h4>登録情報</h4>
 
-            <table class="table table-bordered">
-            <tbody>
-              <tr>
-                <th>氏名</th>
-                <td>岩崎あや</td>
-              </tr>
-              <tr>
-                <th>カナ</th>
-                <td>イワサキアヤ</td>
-              </tr>
-              <tr>
-                <th>郵便番号</th>
-                <td>7793121</td>
-              </tr>
-              <tr>
-                <th>住所</th>
-                <td>大阪府大阪市平野区加美正覚寺1-1-13</td>
-              </tr>
-              <tr>
-                <th>電話番号</th>
-                <td>09028248927</td>
-              </tr>
-              <tr>
-                <th>メールアドレス</th>
-                <td>yunicipal@gmail.com</td>
-              </tr>
-              <tr>
-              </tr>
-            </tbody>
-            </table>
+        <span>
+          <%= link_to "編集する", edit_member_path(@member), class:"col-3 btn btn-primary glyphicon glyphicon-wrench" %>
+        </span>
+        <span>
+          <%= link_to "パスワードを変更する", edit_member_password_path(@member), class:"col-3
+          4 btn btn-primary glyphicon glyphicon-wrench" %>
+        </span>
 
-            <table class="table table-borderless">
-                <tr>
-                  <th>配送先</th>
-                  <th><%= link_to "一覧を見る", member_shipping_addresses_path(@member), class:"col-3 btn btn-primary glyphicon glyphicon-wrench" %>
-                  </th>
-                  </tr>
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <th>氏名</th>
+              <td>岩崎あや</td>
+            </tr>
+            <tr>
+              <th>カナ</th>
+              <td>イワサキアヤ</td>
+            </tr>
+            <tr>
+              <th>郵便番号</th>
+              <td>7793121</td>
+            </tr>
+            <tr>
+              <th>住所</th>
+              <td>大阪府大阪市平野区加美正覚寺1-1-13</td>
+            </tr>
+            <tr>
+              <th>電話番号</th>
+              <td>09028248927</td>
+            </tr>
+            <tr>
+              <th>メールアドレス</th>
+              <td>yunicipal@gmail.com</td>
+            </tr>
+            <tr>
+            </tr>
+          </tbody>
+        </table>
 
-                <tr>
-                  <th>注文履歴</th>
-                  <th><%= link_to "一覧を見る", member_orders_path(@member), class:"col-3 btn btn-primary glyphicon glyphicon-wrench" %></th>
-                </tr>
-            </table>
-        </div>
+        <table class="table table-borderless">
+          <tr>
+            <th>配送先</th>
+            <th><%= link_to "一覧を見る", member_shipping_addresses_path(@member), class:"col-3 btn btn-primary glyphicon glyphicon-wrench" %>
+            </th>
+          </tr>
+
+          <tr>
+            <th>注文履歴</th>
+            <th><%= link_to "一覧を見る", member_orders_path(@member), class:"col-3 btn btn-primary glyphicon glyphicon-wrench" %></th>
+          </tr>
+        </table>
+      </div>
     </div>
-  </div>
-</div>
