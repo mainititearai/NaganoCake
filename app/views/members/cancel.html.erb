@@ -1,1 +1,20 @@
-r3wffw
+    <%= render 'layouts/members_header' %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-6 col-xs-offset-3 text-center">
+			<h3>本当に退会しますか？</h3>
+			<br /><br /><p>退会すると、会員登録情報や</p>
+			<p>これまでの購入履歴が閲覧できなくなります。</p>
+			<p>退会する場合は、「退会する」をクリックしてください。</p>
+
+		<span>
+          <%= link_to "退会しない", edit_member_path, class:"col-3 btn btn-primary" %>
+        </span>
+        <span>
+          <%= link_to "退会する", withdraw_member_path(current_member),method: :patch, class:"col-3
+          4 btn btn-danger" %>
+        </span>
+		</div>
+	</div>
+</div>
