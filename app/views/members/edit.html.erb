@@ -2,8 +2,9 @@
 
 <div class="container">
   <div class="row">
-          <h3>登録情報編集</h3>
-      <div class="col-md-8 col-md-offset">
+
+      <div class="col-md-8 col-md-offset-1">
+                  <h3>登録情報編集</h3>
              <%= form_for(@member) do |f| %>
             <!-- エラーメッセージ表示-->
               <% if @member.errors.any? %>
@@ -14,49 +15,75 @@
                   <% end %>
                 </ul>
               <% end %>
-
-            <br /><div class="field">
-              <%= f.label :（姓） %><br />
-              <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
-            </div>
-            <div class="field">
-              <%= f.label :（名） %><br />
-              <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
-            </div>
-            <div class="field">
-              <%= f.label :（セイ） %><br />
-              <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana" %>
-            </div>
-            <div class="field">
-              <%= f.label :（メイ） %><br />
-              <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana" %>
-            </div>
-              <div class="field">
-              <%= f.label :メールアドレス %><br />
-              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-            </div>
-            <div class="field">
-              <%= f.label :郵便番号（ハイフンなし） %><br />
-              <%= f.text_field :postcode, autofocus: true, autocomplete: "postcode" %>
-            </div>
-            <div class="field">
-              <%= f.label :住所 %><br />
-              <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
-            </div>
-            <div class="field">
-              <%= f.label :電話番号（ハイフンなし） %><br />
-              <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %>
-
-          <div class="row">
-                <span>
-                  <br /><%= f.submit "編集内容を保存する", class:"col-3 btn btn-success col-xs-3" %>
-                </span>
-                <span>
-                  <%= link_to '退会する', cancel_member_path ,class:"col-3 btn btn-danger col-3" %>
-                </span>
-              <% end %>
-          </div>
-
+      <div class="row">
+      <br />
+      <form class="form-inline">
+      <div class="form-group row">
+      <div class="col-sm-3">
+        <%= f.label :（姓） %>
+        <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" ,class:"form-control" %>
       </div>
+      <div class="col-sm-3">
+        <%= f.label :（名）%>
+        <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class:"form-control" %>
+      </div>
+      </div>
+      <div class="form-group row">
+      <div class="col-sm-3">
+        <%= f.label :（セイ）%>
+        <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana",class:"form-control" %>
+      </div>
+      <div class="col-sm-3">
+       <%= f.label :（メイ）%>
+       <%= f.text_field :first_name_kana, autofocus: true, autocomplete: " first_name_kana",class:"form-control" %>
+     </div>
+      </div>
+
+         <div class="form-group row">
+        <div class="col-sm-3">
+        <%= f.label :メールアドレス %>
+        <%= f.email_field :email, autocomplete: "email", class:"form-control" %>
+        </div>
+        </div>
+
+      <div class="form-group row">
+        <div class="col-sm-3">
+        <%= f.label :郵便番号（ハイフンなし）%>
+        <%= f.text_field :postcode, autocomplete: "postcode", class:"form-control" %>
+        </div>
+     </div>
+
+      <div class="form-group row">
+        <div class="col-sm-6">
+        <%= f.label :住所%>
+        <%= f.text_field :address, autocomplete: "address", class:"form-control" %>
+        </div>
+      </div>
+
+        <div class="form-group row">
+        <div class="col-sm-3">
+        <%= f.label :電話番号（ハイフンなし）%>
+        <%= f.text_field :phone_number, autocomplete: "phone_number", class:"form-control" %>
+        </div>
+        </div>
+        </div>
+
+
+            <br><div class="row">
+              <div class="col-xs-4">
+                  <span>
+                  <%= f.submit "編集内容を保存する", class:"col-3 btn btn-primary col-xs-12" %>
+                  </span>
+                </div>
+                <div class="col-xs-2">
+                  <span>
+                    <%= link_to '退会する', cancel_member_path ,class:"col-3 btn btn-danger col-xs-12" %>
+                  </span>
+                </div>
+                <% end %>
+              </div>
+          </form>
+
+        </div>
    </div>
 </div>
