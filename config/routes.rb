@@ -26,9 +26,9 @@ devise_for :members, controllers: {
 }
 
 resource :member, only: [:edit,:show,:update] do
-	get 'cancel' => 'member#cancel'
-	patch 'withdraw' => 'member#withdraw'
-	put 'withdraw' => 'member#withdraw'
+	get 'cancel' => 'members#cancel'
+	patch 'withdraw' => 'members#withdraw'
+	put 'withdraw' => 'members#withdraw'
 
 	resources :products, only: [:index,:show]
 
