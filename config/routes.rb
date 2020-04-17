@@ -18,6 +18,7 @@ end
 
 # member側のルーティング
 root 'home#top'
+get 'home/about' => "home#about"
 devise_for :members, controllers: {
 	sessions:      'members/sessions',
 	passwords:     'members/passwords',
