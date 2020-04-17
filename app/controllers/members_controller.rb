@@ -18,6 +18,7 @@ class MembersController < ApplicationController
 	end
 
 	def cancel
+		@member = current_member
 	end
 
 	def withdraw
