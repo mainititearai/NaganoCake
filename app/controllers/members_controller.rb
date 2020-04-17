@@ -22,6 +22,10 @@ class MembersController < ApplicationController
 	end
 
 	def withdraw
+		@member = current_member
+		@member.withdraw!
+		reset_session
+		redirect_to root_path
 	end
 
 	  private
