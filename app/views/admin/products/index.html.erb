@@ -1,0 +1,36 @@
+<%= render 'layouts/admins_header' %>
+
+<div class="container">
+	<h3>商品一覧画面</h3>
+
+	<table class="table">
+		<thead>
+			<th>商品ID</th>
+			<th>商品名</th>
+			<th>税抜価格</th>
+			<th>ジャンル</th>
+			<th>ステータス</th>
+		</thead>
+		<tbody>
+			<% @products.each do |product| %>
+			<tr>
+				<td>
+					<%= product.id %>
+				</td>
+				<td>
+					<%= link_to product.name,admin_product_path(product) %>
+				</td>
+				<td>
+					<%= product.price %>
+				</td>
+				<td>
+					<%= product.genre.name %>
+				</td>
+				<td>
+					<%= product.sale_status %>
+				</td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

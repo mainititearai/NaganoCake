@@ -1,1 +1,48 @@
 <%= render 'layouts/admins_header' %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-5">
+			<h2>ジャンル追加・一覧画面</h2>
+			<br>
+			<br>
+			<p><%= notice %></p>
+			<%= form_for @genre, :url => {:controller => :genres, :action => :create} do |f| %>
+				<form class="form-inline">
+					ジャンル　
+					<%= f.text_field :name %>
+			 		<%= f.label :valid_status,:有効 %>
+					<%= f.radio_button :valid_status,:active, checked: 'checked' %>　
+					<%= f.label :valid_status,:無効 %>
+					<%= f.radio_button :valid_status,:is_deleted %>
+					<%= f.submit '追加' %>
+				</form>
+			<% end %>
+			<br>
+			<br>
+
+			<table class="table">
+				<thead>
+					<th>ジャンル</th>
+					<th>状態</th>
+					<th></th>
+				</thead>
+				<tbody>
+					<% @genres.each do |genre| %>
+						<tr>
+							<td>
+								<%= genre.name %>
+							</td>
+							<td>
+								<%= genre.valid_status %>
+							</td>
+							<td>
+								<%= link_to '編集する',edit_admin_genre_path(genre), :url => {:controller => :gernes, :action => :edit}, class: 'btn btn-default' %>
+							</td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
