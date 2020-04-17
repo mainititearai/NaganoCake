@@ -47,16 +47,15 @@
               <%= f.label :電話番号（ハイフンなし） %><br />
               <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %>
 
-            <div class="">
-            <div class="actions">
-              <br /><%= f.submit "編集内容を保存する", class: "btn btn-success col-xs-3" %>
-            </div>
-
-            <div class="actions">
-              <%= link_to '退会する', cancel_member_path ,class: "btn btn-danger col-xs-2" %>
-            </div>
-          <% end %>
-
+          <div class="row">
+                <span>
+                  <br /><%= f.submit "編集内容を保存する", class:"col-3 btn btn-success col-xs-3" %>
+                </span>
+                <span>
+                  <%= link_to '退会する', cancel_member_path ,class:"col-3 btn btn-danger col-3" %>
+                </span>
+              <% end %>
+          </div>
 
       </div>
    </div>
