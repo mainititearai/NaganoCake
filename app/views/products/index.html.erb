@@ -1,0 +1,27 @@
+<%= render 'layouts/members_header' %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-2">
+			<h3>ジャンル検索</h3>
+			<% @genre.each do |genre| %>
+				<h5><%= genre.name %></h5>
+			<% end %>
+		</div>
+		<div class="col-xs-10">
+			<h1>商品一覧<small> (全x件)</small></h1>
+			<% @products.each do |product| %>
+				<table class="table">
+					<tr>
+						<td>
+							<%= attachment_image_tag(product,:image,:fill,100,100, fallback: "no_image.jpg") %><br>
+							<%= link_to product.name,member_product_path(product) %><br>
+
+							<%= product.price*0.1 %>
+						</td>
+					</tr>
+				</table>
+			<% end %>
+		</div>
+	</div>
+</div>

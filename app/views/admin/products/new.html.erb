@@ -1,0 +1,29 @@
+<%= render 'layouts/admins_header' %>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-4">
+			<h3>商品登録画面</h3>
+
+			<%= form_for @product,:url => {:controller => :products,:action => :create} do |f| %>
+
+				<%= f.attachment_field :image %>
+		</div>
+		<div class="col-xs-5">
+			<br><br><br><br><br>
+				商品名　<%= f.text_field :name %><br><br>
+
+				商品説明　 <%= f.text_area :introduction%><br><br>
+
+				ジャンル　<%= f.collection_select :genre_id, Genre.all, :id, :name,{include_blank:"-- 選択してください --"} %><br><br>
+
+				税抜価格　 <%= f.text_field :price %>円<br><br>
+
+				販売ステータス　<%= f.select :sale_status,Product.sale_statuses.keys.to_a,{} %>
+		</div>
+		<div class="col-xs-3">
+			<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+				<%= f.submit '新規登録' %>
+			<% end %>
+		</div>
+	</div>
+</div>
