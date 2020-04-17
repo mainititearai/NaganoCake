@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row">
+          <h3>登録情報編集</h3>
+      <div class="col-md-8 col-md-offset">
+             <%= form_for(@member) do |f| %>
+            <!-- エラーメッセージ表示-->
+              <% if @member.errors.any? %>
+                <h3><%= @member.errors.count %>error occurrence</h3><!--エラーメッセ-->
+                <ul>
+                  <% @member.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                  <% end %>
+                </ul>
+              <% end %>
+
+            <br /><div class="field">
+              <%= f.label :（姓） %><br />
+              <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+            </div>
+            <div class="field">
+              <%= f.label :（名） %><br />
+              <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+            </div>
+            <div class="field">
+              <%= f.label :（セイ） %><br />
+              <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana" %>
+            </div>
+            <div class="field">
+              <%= f.label :（メイ） %><br />
+              <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana" %>
+            </div>
+              <div class="field">
+              <%= f.label :メールアドレス %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            </div>
+            <div class="field">
+              <%= f.label :郵便番号（ハイフンなし） %><br />
+              <%= f.text_field :postcode, autofocus: true, autocomplete: "postcode" %>
+            </div>
+            <div class="field">
+              <%= f.label :住所 %><br />
+              <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
+            </div>
+            <div class="field">
+              <%= f.label :電話番号（ハイフンなし） %><br />
+              <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %>
+
+            <div class="actions">
+              <br /><%= f.submit "編集内容を保存する", class: "btn btn-success col-xs-3" %>
+            </div>
+          <% end %>
+
+
+      </div>
+   </div>
+</div>
