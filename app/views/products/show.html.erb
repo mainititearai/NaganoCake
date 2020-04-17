@@ -5,7 +5,7 @@
 		<div class="col-xs-2">
 			<h3>ジャンル検索</h3>
 			<% @genre.each do |genre| %>
-				<h5><%= genre.name %></h5>
+			<h5><%= genre.name %></h5>
 			<% end %>
 		</div>
 		<div class="col-xs-5">
@@ -19,12 +19,14 @@
 			<p><%= @product.introduction %></p><br>
 
 
-			<h3>¥ <%= @product.price*0.1 %><small>(税込)</small></h3>
+			<h3>¥ <%= (@product.price*1.1).floor %><small>(税込)</small></h3>
 
-			<
-			<%= select_tag 'quantity',options_for_select([['個数選択',''],[1],[2],[3],[4],[5],[6],[7],[8],[9],[10]]) %>
-
-			<input type="submit" value="カートに入れる">
+            <%= form_for(@cart_item, url:member_cart_items_path) do |f| %>
+			<%= f.select 'quantity',options_for_select([['個数選択',''],[1],[2],[3],[4],[5],[6],[7],[8],[9],[10]]) %>
+			<%= f.hidden_field :product_id, :value => @product.id %>
+			<%= f.hidden_field :member_id, :value => current_member.id %>
+			<%= f.submit 'カートに入れる' %>
+			<% end %>
 		</div>
 	</div>
 </div>

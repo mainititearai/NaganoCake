@@ -9,10 +9,10 @@
 			<p><%= notice %></p>
 			<%= form_for @genre, :url => {:controller => :genres, :action => :create} do |f| %>
 				<form class="form-inline">
-					ジャンル　
+					ジャンル
 					<%= f.text_field :name %>
 			 		<%= f.label :valid_status,:有効 %>
-					<%= f.radio_button :valid_status,:active, checked: 'checked' %>　
+					<%= f.radio_button :valid_status,:active, checked: 'checked' %>
 					<%= f.label :valid_status,:無効 %>
 					<%= f.radio_button :valid_status,:is_deleted %>
 					<%= f.submit '追加' %>
