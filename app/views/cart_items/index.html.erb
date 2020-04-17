@@ -1,1 +1,27 @@
 <%= render 'layouts/members_header' %>
+<div class="container">
+	<div class="row">
+		<h6>ショッピングカート</h6>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>商品名</th>
+					<th>単価(税込)</th>
+					<th>数量</th>
+					<th>小計</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @cart_items.each do |cart_item| %>
+				<tr>
+					<th><%= cart_item.product.name %></th>
+					<td><%= (cart_item.product.price*1.1).floor %>円</td>
+					<td><%= cart_item.quantity %></td>
+					<td><%= (cart_item.product.price*1.1*cart_item.quantity).floor %>円</td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>

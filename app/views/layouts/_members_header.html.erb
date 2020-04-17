@@ -1,6 +1,6 @@
 <header>
     <nav class="navbar navbar-light bg-light">
-        <nav class="navbar navbar-default">
+        <nav class="navbar navbar-default" style="height: 150px;">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample2">
@@ -9,9 +9,13 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/">
-                        <img alt="LOGO" src="brandImage.png" style="height: 20px;">
-                    </a>
+                    <div class="row">
+                        <div class="col-xs-offset-12">
+                             <a class="navbar-brand" href="/">
+                               <img alt="LOGO" src="/assets/Restaurant_Logo.jpg" style="height: 120px;">
+                             </a>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="collapse navbar-collapse navbar-right" id="navbarEexample2">
@@ -24,10 +28,10 @@
                     <li><%= link_to "ログアウト", destroy_member_session_path, method: :delete %></li>
                     <% else %>
                     <li><%= link_to "お店紹介", home_about_path %>
-                        <li><%= link_to "商品一覧", member_products_path %></li>
-                        <li><%= link_to "新規登録", new_member_registration_path %></li>
-                        <li><%= link_to "ログイン", new_member_session_path %></li>
-                        <% end %>
+                    <li><%= link_to "商品一覧", member_products_path %></li>
+                    <li><%= link_to "新規登録", new_member_registration_path %></li>
+                    <li><%= link_to "ログイン", new_member_session_path %></li>
+                    <% end %>
                     </ul>
                 </div>
             </div>
