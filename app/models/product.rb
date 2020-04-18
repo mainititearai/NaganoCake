@@ -4,6 +4,7 @@ class Product < ApplicationRecord
   has_many :order_items, dependent: :destroy
 
   enum sale_status:{active: 0,is_deleted: 1}
+  enum recommend_status:{recommend: 0, unrecommend: 1}
   attachment :image
 
   validates :name, presence: true

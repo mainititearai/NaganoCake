@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_18_094805) do
+ActiveRecord::Schema.define(version: 2020_04_18_120039) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 2020_04_18_094805) do
     t.integer "sale_status", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "recommend_status", default: 1, null: false
     t.index ["genre_id"], name: "index_products_on_genre_id"
   end
 

@@ -35,10 +35,11 @@ class Admin::ProductsController < ApplicationController
 		end
 	end
 
+
 	private
 
 
 	def product_params
-		params.require(:product).permit(:genre_id,:name,:introduction,:price,:image,:sale_status)
+		params.require(:product).permit(:genre_id,:name,:introduction,:price,:image,:sale_status, :recommend_status)
 	end
 end
