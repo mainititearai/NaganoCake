@@ -6,9 +6,16 @@ class CartItemsController < ApplicationController
 	end
 
 	def create
+		@product = Product.find(params[:cart_item][:product_id])
+		if CartItem.exists?(product_id: @product)
+		@cart_item = CartItem.find_by(product_id: @product.id)
+		@cart_item.quantity += params[:cart_item][:quantity].to_i
+		@cart_item.update(quantity: @cart_item.quantity)
+		else
 		@cart_item = CartItem.new(cart_item_params)
 		@cart_item.save
-		redirect_to member_cart_items_path
+	    end
+	    redirect_to member_cart_items_path
 	end
 
 	def update
