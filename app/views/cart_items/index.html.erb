@@ -2,6 +2,7 @@
 <div class="container">
 	<div class="row">
 		<h6>ショッピングカート</h6>
+		<%= button_to "全て削除",cart_items_destroy_all_member_path, method: :delete %>
 		<table class="table table-bordered">
 			<thead>
 				<tr>
@@ -15,10 +16,16 @@
 			<tbody>
 				<% @cart_items.each do |cart_item| %>
 				<tr>
-					<th><%= cart_item.product.name %></th>
+					<th><%= attachment_image_tag cart_item.product, :image, :fill, 50, 50 %><%= cart_item.product.name %></th>
 					<td><%= (cart_item.product.price*1.1).floor %>円</td>
-					<td><%= cart_item.quantity %></td>
+					<td>
+						<%= form_for cart_item, url:member_cart_item_path(cart_item.id), method: :patch do |f| %>
+						<%= f.text_field :quantity, :size=>4 %>
+						<%= f.submit("変更", class: "btn btn-primary btn-sm") %>
+						<% end %>
+					</td>
 					<td><%= (cart_item.product.price*1.1*cart_item.quantity).floor %>円</td>
+					<td><button type="button" class="btn btn-danger active btn-sm" ><%= link_to "削除", member_cart_item_path(cart_item), method: :delete %></button>
 				</tr>
 				<% end %>
 			</tbody>
