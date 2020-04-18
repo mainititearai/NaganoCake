@@ -32,8 +32,8 @@ resource :member, only: [:edit,:show,:update] do
 
 	resources :products, only: [:index,:show]
 
+    delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
 	resources :cart_items, only: [:index,:create,:update,:destroy]
-	delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
 
 	resources :orders, only: [:new,:create,:index,:show]
 	get 'orders/:id/confirm',to: 'orders#confirm_show',as: 'orders_confirm_show'
