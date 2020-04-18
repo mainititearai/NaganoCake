@@ -22,8 +22,12 @@
 						<td>
 							<%= attachment_image_tag(product,:image,:fill,100,100, fallback: "no_image.jpg") %><br>
 							<%= link_to product.name,member_product_path(product) %><br>
+							<% if product.active? %>
+							<% else %>
+							<strong><%= product.sale_status_i18n %></strong>
+							<% end %>
 
-							<%= (product.price*1.1).floor %>
+							<p>¥<%= (product.price*1.1).floor %></p>
 						</td>
 					</tr>
 				</table>
