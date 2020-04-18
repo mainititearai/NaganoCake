@@ -3,8 +3,10 @@ class ProductsController < ApplicationController
 	def index
 		@products = Product.all
 		@genres = set_genres
+		@name = "商品"
 		if params[:genre_id]
 			@genre = Genre.find(params[:genre_id])
+			@name = @genre.name
 			@products = @genre.products.order(created_at: :desc).all
 		else
 			@products = Product.order(created_at: :desc).all

@@ -11,14 +11,13 @@
 			<% end %>
 		</div>
 		<div class="col-xs-10">
-			<h1>商品一覧<small> (全x件)</small></h1>
+			<h1><%= @name %>一覧<small> (全x件)</small></h1>
 			<% @products.each do |product| %>
 				<table class="table">
 					<tr>
 						<td>
 							<%= attachment_image_tag(product,:image,:fill,100,100, fallback: "no_image.jpg") %><br>
 							<%= link_to product.name,member_product_path(product) %><br>
-							<%= product.genre.name if product.genre.present? %>
 
 							<%= (product.price*1.1).floor %>
 						</td>
