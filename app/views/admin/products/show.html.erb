@@ -16,7 +16,7 @@
 
 			<p>ジャンル　 <%= @product.genre.name %></p><br>
 
-			<p>税込価格 (税抜価格)　 <%= @product.price %> (<%= (@product.price*1.1).floor %>)</p>
+			<p>税込価格 (税抜価格)　 <%= (@product.price*1.1).floor %> (<%= @product.price %>)</p>
 
 			<p>販売ステータス　<%= @product.sale_status %></p>
 		</h4>
