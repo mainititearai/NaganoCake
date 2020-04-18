@@ -20,7 +20,11 @@
 
 				税抜価格　 <%= f.text_field :price %>円<br><br>
 
-				販売ステータス　<%= f.select :sale_status,Product.sale_statuses.keys.map{|k|[I18n.t("enums.product.sale_status.#{k}"),k]} %>
+				販売ステータス　<%= f.select :sale_status,Product.sale_statuses.keys.map{|k|[I18n.t("enums.product.sale_status.#{k}"),k]} %><br><br>
+				<%= f.label :recommend_status,:おすすめに設定 %>
+			    <%= f.radio_button :recommend_status,:recommend %>
+			    <%= f.label :recommend_status,:おすすめに設定しない %>
+			    <%= f.radio_button :recommend_status,:unrecommend %>
 			</h4>
 		</div>
 		<div class="col-xs-3">
