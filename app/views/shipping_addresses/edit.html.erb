@@ -1,0 +1,19 @@
+<%= render 'layouts/members_header' %>
+
+<div class="container">
+
+<h1>配送先編集</h1>
+
+<%= form_for @shipping_address, url:member_shipping_address_path(@shipping_address.id) do |f| %>
+
+  <h1>郵便番号番号（ハイフンなし）</h1>
+    <%= f.text_field :postcode %>
+
+  <h2>住所</h2>
+     <%= f.text_field :address %>
+
+  <h3>宛名</h3>
+    <%= f.text_field :name %>
+    <%= f.submit "編集する " ,class: "btn btn-primary" %>
+ <% end %>
+</div>
