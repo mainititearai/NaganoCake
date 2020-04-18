@@ -65,6 +65,10 @@ gem 'devise'
 
 gem 'enum_help'
 
+gem 'rails-i18n'
+
+gem 'enumerize'
+
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'jquery-rails'
 

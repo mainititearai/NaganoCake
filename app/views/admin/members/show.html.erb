@@ -8,7 +8,7 @@
 		          <tbody>
 		          	<tr>
 		          	  <th>顧客ID</th>
-		          	  <td><%= @member.id %> <%= @member.valid_status %></td>
+		          	  <td><%= @member.id %> <span class="label label-info"><%= @member.valid_status_i18n + "会員" %></span></td>
 		          	</tr>
 		            <tr>
 		              <th width="20%">氏名</th>
