@@ -5,4 +5,9 @@ class Product < ApplicationRecord
 
   enum sale_status:{active: 0,is_deleted: 1}
   attachment :image
+
+  validates :name, presence: true
+  validates :introduction, presence: true
+  validates :price, presence: true
+  validates :image_id, presence: true
 end
