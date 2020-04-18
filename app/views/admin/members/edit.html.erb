@@ -1,0 +1,100 @@
+    <%= render 'layouts/members_header' %>
+
+<div class="container">
+  <div class="row">
+     <h3>登録情報編集</h3>
+      <div class="col-mxs-8 col-md-offset-1">
+             <%= form_for @member,:url =>{:controller => :members, :action => :update} do |f| %>
+                        <!-- エラーメッセージ表示-->
+                          <% if @member.errors.any? %>
+                            <h3><%= @member.errors.count %>error occurrence</h3><!--エラーメッセ-->
+                            <ul>
+                              <% @member.errors.full_messages.each do |message| %>
+                              <li><%= message %></li>
+                              <% end %>
+                            </ul>
+                          <% end %>
+                  <div class="row">
+                  <br />
+                  <form class="form-inline">
+                  <div class="form-group row">
+                  <div class="col-sm-3">
+                    <%= f.label :（姓） %>
+                    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" ,class:"form-control" %>
+                  </div>
+                  <div class="col-sm-3">
+                    <%= f.label :（名）%>
+                    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class:"form-control" %>
+                  </div>
+                  </div>
+                  <div class="form-group row">
+                  <div class="col-sm-3">
+                    <%= f.label :（セイ）%>
+                    <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana",class:"form-control" %>
+                  </div>
+                  <div class="col-sm-3">
+                   <%= f.label :（メイ）%>
+                   <%= f.text_field :first_name_kana, autofocus: true, autocomplete: " first_name_kana",class:"form-control" %>
+                 </div>
+                  </div>
+
+                     <div class="form-group row">
+                    <div class="col-sm-3">
+                    <%= f.label :メールアドレス %>
+                    <%= f.email_field :email, autocomplete: "email", class:"form-control" %>
+                    </div>
+                    </div>
+
+                  <div class="form-group row">
+                    <div class="col-sm-3">
+                    <%= f.label :郵便番号（ハイフンなし）%>
+                    <%= f.text_field :postcode, autocomplete: "postcode", class:"form-control" %>
+                    </div>
+                 </div>
+
+                  <div class="form-group row">
+                    <div class="col-sm-6">
+                    <%= f.label :住所%>
+                    <%= f.text_field :address, autocomplete: "address", class:"form-control" %>
+                    </div>
+                  </div>
+
+                    <div class="form-group row">
+                    <div class="col-sm-3">
+                    <%= f.label :電話番号（ハイフンなし）%>
+                    <%= f.text_field :phone_number, autocomplete: "phone_number", class:"form-control" %>
+                    </div>
+                    </div>
+
+                    <div class="field">
+                    <div class="form-group row">
+                    <div class="col-sm-6">
+                    <%= f.label :"会員ステータス " %>
+                    <div class="radio-inline">
+                      <%= f.radio_button :valid_status, :active %>
+                      <%= f.label :有効, class: "valid_status_label" %>
+                    </div>
+                    <div class="radio-inline">
+                      <%= f.radio_button :valid_status, :is_deleted %>
+                      <%= f.label :退会済み, class: "valid_statuslabel" %>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+
+
+                     <br><div class="row">
+                    <div class="col-xs-2">
+                  <span>
+                  <%= f.submit "編集内容を保存する", class:"col-3 btn btn-primary col-xs-12" %>
+                  </span>
+                </div>
+          <% end %>
+              </div>
+          </form>
+
+        </div>
+   </div>
+</div>
+<br><br><br><%= render 'layouts/admins_footer' %>

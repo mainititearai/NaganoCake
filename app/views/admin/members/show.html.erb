@@ -1,0 +1,50 @@
+<%= render 'layouts/admins_header' %>
+
+<div class="container">
+	<h3>会員詳細画面</h3>
+		 <div class="row">
+		 		 <div class="col-xs-8 col-xs-offset-1">
+				  <table class="table table-bordered">
+		          <tbody>
+		          	<tr>
+		          	  <th>顧客ID</th>
+		          	  <td><%= @member.id %> <span class="label label-info"><%= @member.valid_status_i18n + "会員" %></span></td>
+		          	</tr>
+		            <tr>
+		              <th width="20%">氏名</th>
+		              <td width="80%"><%= @member.last_name %> <%= @member.first_name %></td>
+		            </tr>
+		            <tr>
+		              <th>カナ</th>
+		              <td><%= @member.last_name_kana %> <%= @member.first_name_kana %></td>
+		            </tr>
+		            <tr>
+		              <th>郵便番号</th>
+		              <td><%= @member.postcode %></td>
+		            </tr>
+		            <tr>
+		              <th>住所</th>
+		              <td><%= @member.address %></td>
+		            </tr>
+		            <tr>
+		              <th>電話番号</th>
+		              <td><%= @member.phone_number %></td>
+		            </tr>
+		            <tr>
+		              <th>メールアドレス</th>
+		              <td><%= @member.email %></td>
+		            </tr>
+		            <tr>
+		            </tr>
+		          </tbody>
+		        </table>
+		     		 <span>
+	       			   <%= link_to " 編集する", edit_admin_member_path, class:"col-3 btn btn-primary glyphicon glyphicon-wrench" %>
+	       			 </span>
+	     			  <span>
+	          		   <%= link_to " 注文履歴一覧を見る", edit_member_password_path, class:"col-3
+	        			  4 btn btn-primary glyphicon glyphicon-wrench" %>
+	       			 </span>
+	    	</div>
+	  </div>
+</div>
