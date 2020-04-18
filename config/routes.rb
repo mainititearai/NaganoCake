@@ -36,8 +36,7 @@ resource :member, only: [:edit,:show,:update] do
 	resources :cart_items, only: [:index,:create,:update,:destroy]
 
 	resources :orders, only: [:new,:create,:index,:show]
-	get 'orders/:id/confirm',to: 'orders#confirm_show',as: 'orders_confirm_show'
-	post 'orders/:id/confirm' => 'orders#confirm'
+	post 'orders/:id/confirm',to: 'orders#confirm',as: 'orders_confirm'
 	get 'orders/thanks' => 'orders#thanks'
 
 	resources :shipping_addresses, only: [:index,:edit,:create,:update,:destroy]
