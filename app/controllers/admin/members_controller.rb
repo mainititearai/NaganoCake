@@ -3,7 +3,6 @@ class Admin::MembersController < ApplicationController
 
 	def index
 		@members = Member.all
-		@member = Member.find(params[:id])
 	end
 
 	def show
@@ -11,10 +10,18 @@ class Admin::MembersController < ApplicationController
 	end
 
 	def edit
-
+		@member = Member.find(params[:id])
 	end
 
 	def update
+		@member = Member.find(params[:id])
+		@member.update(member_params)
+		redirect_to admin_member_path
 
 	end
+
+	  private
+	  def member_params
+ 	 	params.require(:member).permit(:email,:last_name,:first_name,:last_name_kana,:first_name_kana,:address,:postcode,:phone_number,:valid_status)
+	  end
 end
