@@ -4,8 +4,10 @@
 	<div class="row">
 		<div class="col-xs-2">
 			<h3>ジャンル検索</h3>
-			<% @genre.each do |genre| %>
-				<h5><%= genre.name %></h5>
+
+			<!-- ジャンルのidをurlの後ろにつける記述 -->
+			<% @genres.each do |genre| %>
+				<h5><%=link_to genre.name, member_products_path(genre_id:genre.id) %></h5>
 			<% end %>
 		</div>
 		<div class="col-xs-10">
@@ -16,8 +18,9 @@
 						<td>
 							<%= attachment_image_tag(product,:image,:fill,100,100, fallback: "no_image.jpg") %><br>
 							<%= link_to product.name,member_product_path(product) %><br>
+							<%= product.genre.name if product.genre.present? %>
 
-							<%= product.price*0.1 %>
+							<%= (product.price*1.1).floor %>
 						</td>
 					</tr>
 				</table>

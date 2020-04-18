@@ -9,11 +9,11 @@ class Admin::GenresController < ApplicationController
 	def create
 		genre = Genre.new(genre_params)
 		if  genre.save
-			redirect_to admin_genres_path,notice: "登録しました"
+			redirect_to admin_genres_path, notice: "登録しました"
 		else
 			@genres = Genre.all
 			@genre = Genre.new
-			redirect_to admin_genres_path, notice: "空欄があります"
+			redirect_to admin_genres_path, notice: "ジャンル名を入力してください"
 		end
 	end
 
@@ -26,7 +26,7 @@ class Admin::GenresController < ApplicationController
 		if  @genre.update(genre_params)
 			redirect_to admin_genres_path,notice: "編集完了しました"
 		else
-			render 'edit',notice: "空欄があります"
+			redirect_to edit_admin_genre_path,notice: "空欄があります"
 		end
 	end
 
