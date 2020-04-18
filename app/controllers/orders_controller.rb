@@ -7,12 +7,13 @@ class OrdersController < ApplicationController
 	end
 
 	def new
-	end
 
-	def create
 	end
 
 	def confirm
+	end
+
+	def create
 	end
 
 	def thanks

@@ -6,7 +6,7 @@ class ShippingAddressesController < ApplicationController
 	end
 
 	def create
-      @shipping_address = ShippingAddress.new(create_params)
+      @shipping_address = ShippingAddress.new(shipping_address_params)
       @shipping_address.member = current_member
       @shipping_address.save
       redirect_to member_shipping_addresses_path
@@ -19,22 +19,19 @@ class ShippingAddressesController < ApplicationController
 	end
 
 	def update
-	  @shipping_address = ShippingAddress.find(params[:id])
+	  shipping_address = ShippingAddress.find(params[:id])
 	  shipping_address.update(shipping_address_params)
-	  redirect_to member_shipping_address_path
+	  redirect_to member_shipping_addresses_path
 	end
 
 
 	def destroy
       shipping_address = ShippingAddress.find(params[:id])
 	  shipping_address.destroy
-	  redirect_to member_shipping_address_path
+	  redirect_to member_shipping_addresses_path
 	end
-private
-def create_params
-	params.require(:shipping_address).permit(:postcode, :address, :name, :member_id)
 
-end
+private
 def shipping_address_params
 	params.require(:shipping_address).permit(:postcode, :address, :name, :member_id)
 
