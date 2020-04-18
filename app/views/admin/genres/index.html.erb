@@ -16,7 +16,7 @@
 							<%= f.radio_button :valid_status,:active, checked: 'checked' %>
 							<%= f.label :valid_status,:無効 %>
 							<%= f.radio_button :valid_status,:is_deleted %>
-							<%= f.submit '追加' %>
+							<%= f.submit '追加', class: "btn btn-default" %>
 						</form>
 					<% end %>
 				</h4>
@@ -36,7 +36,7 @@
 									<%= genre.name %>
 								</td>
 								<td>
-									<%= genre.valid_status %>
+									<%= genre.valid_status_i18n %>
 								</td>
 								<td>
 									<%= link_to '編集する',edit_admin_genre_path(genre), :url => {:controller => :gernes, :action => :edit}, class: 'btn btn-default' %>

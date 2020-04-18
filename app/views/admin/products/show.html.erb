@@ -4,11 +4,13 @@
 	<div class="row">
 		<div class="col-xs-4">
 			<h1>商品 詳細画面</h1>
+
+			<br><br><br><br>
 			<%= attachment_image_tag(@product,:image,:fill,200,200, fallback: "no_image.jpg") %>
 		</div>
 		<div class="col-xs-5">
 			<h3><%= notice %></h3>
-			<br><br><br><br><br><br><br><br><br>
+			<br><br><br><br><br><br><br>
 		<h4>
 			<p>商品名　<%= @product.name %></p><br>
 
@@ -16,9 +18,9 @@
 
 			<p>ジャンル　 <%= @product.genre.name %></p><br>
 
-			<p>税込価格 (税抜価格)　 <%= @product.price %> (<%= (@product.price*1.1).floor %>)</p>
+			<p>税込価格 (税抜価格)　 <%= (@product.price*1.1).floor %> (<%= @product.price %>)</p>
 
-			<p>販売ステータス　<%= @product.sale_status %></p>
+			<p>販売ステータス　<%= @product.sale_status_i18n %></p>
 		</h4>
 		</div>
 		<div class="col-xs-3">

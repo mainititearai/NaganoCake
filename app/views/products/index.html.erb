@@ -5,25 +5,29 @@
 		<div class="col-xs-2">
 			<h3>ジャンル検索</h3>
 
-			<!-- ジャンルのidをurlの後ろにつける記述 -->
 			<% @genres.each do |genre| %>
-				<h5><%=link_to genre.name, member_products_path(genre_id:genre.id) %></h5>
+				<% if genre.active? %>
+					<h4>
+						<%=link_to genre.name, member_products_path(genre_id:genre.id) %>
+					</h4>
+				<% end %>
 			<% end %>
 		</div>
 		<div class="col-xs-10">
-			<h1>商品一覧<small> (全x件)</small></h1>
+			<h1><%= @name %>一覧<small> (全<%= @count %>件)</small></h1>
 			<% @products.each do |product| %>
+					<% if product.genre.active? %>
 				<table class="table">
 					<tr>
 						<td>
 							<%= attachment_image_tag(product,:image,:fill,100,100, fallback: "no_image.jpg") %><br>
 							<%= link_to product.name,member_product_path(product) %><br>
-							<%= product.genre.name if product.genre.present? %>
 
 							<%= (product.price*1.1).floor %>
 						</td>
 					</tr>
 				</table>
+				<% end %>
 			<% end %>
 		</div>
 	</div>

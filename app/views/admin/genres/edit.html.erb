@@ -10,11 +10,11 @@
 		<%= form_for Genre.find(params[:id]), :url => {:controller => :genres, :action => :update} do |f| %>
 			ジャンル　
 			<%= f.text_field :name %>
-			<%= f.label :gender,:有効 %>
+			<%= f.label :valid_status,:有効 %>
 			<%= f.radio_button :valid_status,:active %>
-			<%= f.label :gender,:無効 %>
+			<%= f.label :valid_status,:無効 %>
 			<%= f.radio_button :valid_status,:is_deleted %>
-			<%= f.submit '変更を保存する' %>
+			<%= f.submit '変更を保存する', class: "btn btn-default" %>
 		<% end %>
 		</h4>
 	</div>
