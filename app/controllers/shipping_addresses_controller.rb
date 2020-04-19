@@ -32,8 +32,8 @@ class ShippingAddressesController < ApplicationController
 	end
 
 private
+
 def shipping_address_params
 	params.require(:shipping_address).permit(:postcode, :address, :name, :member_id)
-
 end
 end
