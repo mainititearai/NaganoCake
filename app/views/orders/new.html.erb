@@ -1,0 +1,29 @@
+<%= render 'layouts/members_header' %>
+<div class="container">
+	<div class="row">
+		<%= form_with :url => orders_confirm_member_path, local: :true do %>
+		　　　　<h3>注文情報入力</h3>
+		<h4>支払い方法</h4>
+		<%= radio_button :order_info, :payment_method,:credit_card %>
+		<%= label :order_info, :payment_method,:クレジットカード %>
+		<%= radio_button :order_info, :payment_method,:bank %>
+		<%= label :order_info, :payment_method,:銀行振込 %>
+
+		<h4>お届け先</h4>
+		<%= radio_button :order_info, :address_kind, :self_address %>
+		<%= current_member.postcode %><%= current_member.address %><%= current_member.last_name %><%= current_member.first_name %><br/>
+
+
+        <%= radio_button :order_info, :address_kind, :other_address %>
+		<%= collection_select :order_info, :other_address_id, ShippingAddress.all, :id, :address %><br/>
+
+
+        <%= radio_button :order_info, :address_kind, :new_address %>
+		郵便番号<%= text_field :order_info, :new_postcode %><br/>
+		住所<%= text_field :order_info, :new_address %><br/>
+		宛名<%= text_field :order_info, :new_name %><br/>
+
+		<%= submit_tag ("確認画面へ進む")  %>
+		<% end %>
+	</div>
+</div>
