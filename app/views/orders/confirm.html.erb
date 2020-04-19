@@ -1,0 +1,31 @@
+<%= render 'layouts/members_header' %>
+<div class="container">
+	<div class="row">
+<table>
+	<thead>
+		<th>
+			商品名
+		</th>
+	</thead>
+<% @cart_items.each do |cart_item| %>
+	<tbody>
+		<tr>
+			<td>
+				<%= cart_item.product.name %>
+			</td>
+		</tr>
+	</tbody>
+<% end %>
+</table>
+<h3>支払い方法</h3>
+<%= @order.payment_method_i18n %>
+
+<h3>お届け先住所</h3>
+氏名<%= @order.name %><br>
+郵便番号<%= @order.postcode %><br>
+住所<%= @order.address %><br>
+
+
+<%= link_to '戻る', :back, class: "btn btn-default" %>
+</div>
+</div>

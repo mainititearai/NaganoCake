@@ -14,3 +14,7 @@ ja:
       sale_status:
         active: "販売中"
         is_deleted: "売切中"
+    order:
+      payment_method:
+        credit_card: "クレジットカード"
+        bank_transfer: "銀行振込"
