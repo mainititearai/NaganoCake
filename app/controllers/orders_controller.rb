@@ -32,9 +32,16 @@ class OrdersController < ApplicationController
 	end
 
 	def create
+		@order = Order.new(order_params)
+		@order.save
+		redirect_to orders_thanks_member_path
 	end
 
 	def thanks
+	end
+
+	def order_params
+		params.require(:order).permit(:member_id,:name, :postcode, :address, :payment_method, :order_status)
 	end
 
 end

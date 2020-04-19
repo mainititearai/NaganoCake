@@ -23,8 +23,8 @@
         <%= radio_button :order_info, :address_kind, :new_address %>
         新しいお届け先<br>
 		郵便番号(ハイフンなし)<%= text_field :order_info, :new_postcode %><br/>
-		住所　　　　　　　　　<%= text_field :order_info, :new_address %><br/>
-		宛名　　　　　　　　　<%= text_field :order_info, :new_name %><br/>
+		住所 <%= text_field :order_info, :new_address %><br/>
+		宛名 <%= text_field :order_info, :new_name %><br/>
 
 		<%= submit_tag ("確認画面へ進む"),class: "btn btn-default" %>
 		<% end %>

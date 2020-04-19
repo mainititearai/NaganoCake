@@ -25,6 +25,16 @@
 郵便番号<%= @order.postcode %><br>
 住所<%= @order.address %><br>
 
+<%= form_for(@order, url:member_orders_path, method: :post) do |f| %>
+<%= f.hidden_field :member_id, :value => @current_member.id %>
+<%= f.hidden_field :payment_method, :value => @order.payment_method %><br>
+<%= f.hidden_field :name, :value => @order.name %><br>
+<%= f.hidden_field :postcode, :value => @order.postcode %><br>
+<%= f.hidden_field :address, :value => @order.address %><br>
+
+
+<%= f.submit '購入確定' %>
+<% end %>
 
 <%= link_to '戻る', :back, class: "btn btn-default" %>
 </div>
