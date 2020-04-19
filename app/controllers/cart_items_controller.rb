@@ -1,14 +1,16 @@
 class CartItemsController < ApplicationController
 
 	def index
-		@cart_items = CartItem.all
+		@member = current_member
+		@cart_items = @member.cart_items.all
 		@sum = 0
 	end
 
 	def create
+		@member = current_member
 		@product = Product.find(params[:cart_item][:product_id])
-		if CartItem.exists?(product_id: @product)
-		@cart_item = CartItem.find_by(product_id: @product.id)
+		if CartItem.exists?(product_id: @product, member_id: @member)
+		@cart_item = CartItem.find_by(product_id: @product.id, member_id: @member)
 		@cart_item.quantity += params[:cart_item][:quantity].to_i
 		@cart_item.update(quantity: @cart_item.quantity)
 		else

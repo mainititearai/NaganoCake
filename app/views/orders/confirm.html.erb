@@ -12,6 +12,7 @@
 		<tr>
 			<td>
 				<%= cart_item.product.name %>
+				<%= cart_item.product.price %>
 			</td>
 		</tr>
 	</tbody>
@@ -31,7 +32,6 @@
 <%= f.hidden_field :name, :value => @order.name %><br>
 <%= f.hidden_field :postcode, :value => @order.postcode %><br>
 <%= f.hidden_field :address, :value => @order.address %><br>
-
 
 <%= f.submit '購入確定' %>
 <% end %>
