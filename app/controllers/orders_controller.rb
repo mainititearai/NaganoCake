@@ -32,9 +32,34 @@ class OrdersController < ApplicationController
 	end
 
 	def create
+		@order = Order.new(order_params)
+		@member = current_member
+		@order.save
+		#ここに新規お届け先を登録した場合、配送先一覧に保存される動きを追加する！！！
+		
+		
+		
+		
+		
+		@cart_items = @member.cart_items.all
+		# 一つ上で全件取得したquantityを１件ずつ取得するeach文
+		@cart_items.each do |cart_item|
+		@order_item = OrderItem.new
+		@order_item.order_id = @order.id
+		@order_item.product_id = cart_item.product_id
+		@order_item.quantity = cart_item.quantity
+		@order_item.price = cart_item.product.price
+		@order_item.save
+		end
+		current_member.cart_items.destroy_all
+		redirect_to orders_thanks_member_path
 	end
 
 	def thanks
 	end
 
+
+	def order_params
+		params.require(:order).permit(:member_id,:name, :postcode, :address, :payment_method, :order_status)
+	end
 end
