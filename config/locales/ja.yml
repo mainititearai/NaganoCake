@@ -14,7 +14,21 @@ ja:
       sale_status:
         active: "販売中"
         is_deleted: "売切中"
+
     order:
       payment_method:
         credit_card: "クレジットカード"
         bank_transfer: "銀行振込"
+      order_status:
+        waiting: "入金待ち"
+        confirm: "入金確認"
+        in_production: "製作開始"
+        preparation: "発送準備中"
+        shipped: "発送済み"
+
+    order_item:
+      production_status:
+        cant: "着手不可"
+        waiting: "製作待ち"
+        working: "製作中"
+        completed: "製作完了"
