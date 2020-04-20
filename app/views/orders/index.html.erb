@@ -1,0 +1,27 @@
+<%= render 'layouts/members_header' %>
+
+<div class="container">
+	<div class="row">
+		<h3>注文履歴一覧</h3>
+		<table class="table">
+			<thead>
+				<th>注文日</th>
+				<th>配送先</th>
+				<th>注文商品</th>
+				<th>ステータス</th>
+				<th>注文詳細</th>
+			</thead>
+			<% @orders.each do |order| %>
+			<tbody>
+				<tr>
+					<td><%= order.name %></td>
+					<td><%= order.postcode %></td>
+					<td><%= order.address %></td>
+					<td></td>
+					<td><%= link_to '表示する',member_order_path(order) %></td>
+				</tr>
+			</tbody>
+			<% end %>
+		</table>
+	</div>
+</div>

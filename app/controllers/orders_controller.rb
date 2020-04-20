@@ -36,11 +36,12 @@ class OrdersController < ApplicationController
 		@member = current_member
 		@order.save
 		#ここに新規お届け先を登録した場合、配送先一覧に保存される動きを追加する！！！
-		
-		
-		
-		
-		
+		@shipping_address = ShippingAddress.new
+		@shipping_address.member_id = current_member.id
+		@shipping_address.name = @order.name
+		@shipping_address.postcode = @order.postcode
+		@shipping_address.address = @order.address
+		@shipping_address.save
 		@cart_items = @member.cart_items.all
 		# 一つ上で全件取得したquantityを１件ずつ取得するeach文
 		@cart_items.each do |cart_item|
