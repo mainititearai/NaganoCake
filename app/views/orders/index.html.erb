@@ -2,7 +2,7 @@
 
 <div class="container">
 	<div class="row">
-		<h3>注文履歴一覧</h3>
+		<h1>注文履歴一覧</h1>
 		<table class="table">
 			<thead>
 				<th>注文日</th>
@@ -17,7 +17,7 @@
 					<td><%= order.name %></td>
 					<td><%= order.postcode %></td>
 					<td><%= order.address %></td>
-					<td></td>
+					<td><%= order.order_status_i18n %></td>
 					<td><%= link_to '表示する',member_order_path(order) %></td>
 				</tr>
 			</tbody>

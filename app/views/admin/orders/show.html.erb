@@ -21,7 +21,10 @@
 		            </tr>
 		            <tr>
 		              <th class="info">注文ステータス</th>
-		              <td><%= @order.order_status_i18n %></td>
+		              <td><%= form_for @order,:url => {:controller => :orders,:action => :update} do |f| %>
+							<%= f.select :order_status,Order.order_statuses.keys.map{|k| [I18n.t("enums.order.order_status.#{k}"),k]} %>
+							<%= f.submit "更新", class:" btn btn-primary glyphicon glyphicon-wrench" %>
+							<% end %></td>
 		            </tr>
 		          </tbody>
 		        </table>
@@ -52,16 +55,34 @@
 						      </table>
 						 	 </div>
 						<div class="col-xs-4">
-							商品合計 7,150円
-							<br>送料 800円
-							<br>請求金額合計 8,950円
+							 <table class="table table-bordered">
+						          <tbody>
+						          	<tr>
+						          	  <th width="30%" class="warning">商品合計</th>
+						          	  <td width="50%" class="text-center">
+						          	  		<% @order_items.each do |order_item| %>
+						          	  		<% sab_total = (order_item.price*order_item.quantity).floor %>
+											<% @sum += sab_total %>
+											<% end %>
+											<%= @sum %>円</td>
+						          	</tr>
+						            <tr>
+						              <th class="warning">送料</th>
+						              <td class="text-center">800円</td>
+						            </tr>
+						            <tr>
+						              <th class="warning">請求合計金額</th>
+						              <td class="text-center">
+											<%= (@sum*1.1).floor %>円
+									  </td>
+						            </tr>
+						          </tbody>
+						        </table>
 						</div>
 		</div>
 
 	</div>
 </div>
-<%= form_for @order_item,:url => {:controller => :orders,:action => :update} do |f| %>
-<%= f.select :production_status,OrderItem.production_statuses.keys.map{|k| [I18n.t("enums.order_item.production_status.#{k}"),k]} %>
-<% end %>
+
 
 <%= render 'layouts/admins_footer' %>

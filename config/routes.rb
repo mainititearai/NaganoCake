@@ -35,9 +35,9 @@ resource :member, only: [:edit,:show,:update] do
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
 	resources :cart_items, only: [:index,:create,:update,:destroy]
 
+	get 'orders/thanks' => 'orders#thanks'
 	resources :orders, only: [:new,:create,:index,:show]
 	post 'orders/confirm',to: 'orders#confirm',as: 'orders_confirm'
-	get 'orders/thanks' => 'orders#thanks'
 
 	resources :shipping_addresses, only: [:index,:edit,:create,:update,:destroy]
 
