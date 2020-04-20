@@ -5,7 +5,11 @@ class OrdersController < ApplicationController
 	end
 
 	def show
-		@order = Order.find(params[:id])
+		@order = Order.find(params[:id ])
+		@order_item = OrderItem.find_by(order_id: @order)
+		@order_items = OrderItem.all
+		@sum = 0
+
 	end
 
 	def new
