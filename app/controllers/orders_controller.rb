@@ -19,6 +19,7 @@ class OrdersController < ApplicationController
 	def confirm
 		@order = Order.new
 		@order.payment_method = params[:order_info][:payment_method]
+		@sum = 0
 		#自分の住所
 		if params[:order_info][:address_kind] == "self_address"
 		@order.address = current_member.address
