@@ -1,41 +1,69 @@
 <%= render 'layouts/members_header' %>
 <div class="container">
 	<div class="row">
-<table>
-	<thead>
-		<th>
-			商品名
-		</th>
-	</thead>
-<% @cart_items.each do |cart_item| %>
-	<tbody>
-		<tr>
-			<td>
-				<%= cart_item.product.name %>
-				<%= cart_item.product.price %>
-			</td>
-		</tr>
-	</tbody>
-<% end %>
-</table>
-<h3>支払い方法</h3>
-<%= @order.payment_method_i18n %>
+		<h2>注文情報確認</h2>
+		<div class="col-xs-8">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>商品名</th>
+					<th>単価(税込)</th>
+					<th>数量</th>
+					<th>小計</th>
+				</tr>
+			</thead>
+			<% @cart_items.each do |cart_item| %>
+			<tbody>
+				<tr>
+					<th><%= attachment_image_tag cart_item.product, :image, :fill, 50, 50 %><%= cart_item.product.name %></th>
+					<td><%= (cart_item.product.price*1.1).floor %>円</td>
+					<td><%= cart_item.quantity%></td>
+					<td><%= (cart_item.product.price*1.1*cart_item.quantity).floor %>円</td>
+						<% sab_total = (cart_item.product.price*1.1*cart_item.quantity).floor %>
+						<% @sum += sab_total %>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-xs-4">
+			<table class="table table-bordered">
+				<tr>
+					<th>送料</th>
+					<th>800円</th>
+				</tr>
+				<tr>
+					<th>商品合計</th>
+					<th><%= @sum %>円</th>
+				</tr>
+				<tr>
+					<th>請求金額</th>
+					<th><%= 800+@sum %>円</th>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="row">
+			<h3>支払い方法</h3>
+			<%= @order.payment_method_i18n %>
 
-<h3>お届け先住所</h3>
-氏名<%= @order.name %><br>
-郵便番号<%= @order.postcode %><br>
-住所<%= @order.address %><br>
+			<h3>お届け先住所</h3>
+			氏名<%= @order.name %><br>
+			郵便番号<%= @order.postcode %><br>
+			住所<%= @order.address %><br>
 
-<%= form_for(@order, url:member_orders_path, method: :post) do |f| %>
-<%= f.hidden_field :member_id, :value => @current_member.id %>
-<%= f.hidden_field :payment_method, :value => @order.payment_method %><br>
-<%= f.hidden_field :name, :value => @order.name %><br>
-<%= f.hidden_field :postcode, :value => @order.postcode %><br>
-<%= f.hidden_field :address, :value => @order.address %><br>
+			<%= form_for(@order, url:member_orders_path, method: :post) do |f| %>
+			<%= f.hidden_field :member_id, :value => @current_member.id %>
+			<%= f.hidden_field :payment_method, :value => @order.payment_method %><br>
+			<%= f.hidden_field :name, :value => @order.name %><br>
+			<%= f.hidden_field :postcode, :value => @order.postcode %><br>
+			<%= f.hidden_field :address, :value => @order.address %><br>
 
-<%= f.submit '購入確定' %>
-<% end %>
+			<%= f.submit '購入確定' %>
+			<% end %>
 
-<%= link_to '戻る', :back, class: "btn btn-default" %>
-</div>
-</div>
+			<%= link_to '戻る', :back, class: "btn btn-default" %>
+		</div>
+	</div>
+	<%= render 'layouts/members_footer' %>
+
