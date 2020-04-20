@@ -26,7 +26,7 @@
 		<div class="col-xs-3">
 			<h3>請求情報</h3>
 			<table class="table">
-				<% @order_items.each do |order_item| %>
+				<% @order.order_items.each do |order_item| %>
 				<% sab_total = (order_item.product.price*1.1*order_item.quantity).floor %>
 				<% @sum += sab_total %>
 				<% end %>
@@ -49,7 +49,7 @@
 				<tr>
 					<td>商品</td><td>単価(税込)</td><td>個数</td><td>小計</td>
 				</tr>
-				<% @order_items.each do |order_item| %>
+				<% @order.order_items.each do |order_item| %>
 				<tr>
 					<td><%= order_item.product.name %></td>
 					<td><%= (order_item.product.price*1.1).floor %></td>

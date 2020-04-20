@@ -8,15 +8,27 @@
 				<th>注文日</th>
 				<th>配送先</th>
 				<th>注文商品</th>
+				<th>支払い金額</th>
 				<th>ステータス</th>
 				<th>注文詳細</th>
 			</thead>
 			<% @orders.each do |order| %>
 			<tbody>
 				<tr>
-					<td><%= order.name %></td>
-					<td><%= order.postcode %></td>
-					<td><%= order.address %></td>
+					<td><%= order.created_at %></td>
+					<td><%= order.postcode %><br><%= order.address %><br><%= order.name %></td>
+					<td>
+						<% order.order_items.each do |order_item| %>
+						<%= order_item.product.name %>
+						<% end %>
+					</td>
+					<td>
+						<% order.order_items.each do |order_item| %>
+						<% sab_total = (order_item.product.price*1.1*order_item.quantity).floor %>
+						<% @sum += sab_total %>
+						<% end %>
+						<%= @sum+800 %>
+					</td>
 					<td><%= order.order_status_i18n %></td>
 					<td><%= link_to '表示する',member_order_path(order) %></td>
 				</tr>
