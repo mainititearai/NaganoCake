@@ -3,31 +3,28 @@
 	<div class="row">
 		<div class="col-xs-offset-4 col-xs-10">
 			<p>ようこそ、NaganoCakeへ！<br/>
-			   このサイトは、ケーキ販売のECサイトになります。<br/>
-			   会員でない方も商品の閲覧はできますが、<br/>
-			   購入には会員登録が必要になります。</p>
-	    </div>
+				このサイトは、ケーキ販売のECサイトになります。<br/>
+				会員でない方も商品の閲覧はできますが、<br/>
+			購入には会員登録が必要になります。</p>
+		</div>
 	</div>
 	<div class="row">
 		<div class="col-xs-12">
 			<% @products.each do |product| %>
-					<% if product.genre.active? %>
-				<table class="table">
-					<tr>
-						<td>
-							<%= attachment_image_tag(product,:image,:fill,100,100, fallback: "no_image.jpg") %><br>
-							<%= link_to product.name,member_product_path(product) %><br>
+			<% if product.genre.active? %>
+			<table class="table">
+				<tr>
+					<td>
+						<%= attachment_image_tag(product,:image,:fill,100,100, fallback: "no_image.jpg") %><br>
+						<%= link_to product.name,member_product_path(product) %><br>
 
-							<%= (product.price*1.1).floor %>
-						</td>
-					</tr>
-				</table>
-				<% end %>
+						<%= (product.price*1.1).floor %>
+					</td>
+				</tr>
+			</table>
+			<% end %>
 			<% end %>
 		</div>
 	</div>
 </div>
-
 <%= render 'layouts/members_footer' %>
-
-
