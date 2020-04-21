@@ -25,7 +25,7 @@
 %></li>
 				<li><%= link_to " カート", member_cart_items_path, class:"glyphicon glyphicon-shopping-cart"%></li>
 				<li><%= link_to " ログアウト", destroy_member_session_path, method: :delete ,class:"glyphicon glyphicon-log-out" %></li>
-				<p class="navbar-text" style="padding-left: 200px;">ようこそ  <%= current_member.last_name %><%= current_member.first_name %>さん</p>
+
 				<% else %>
 				<li><%= link_to " お店紹介 ", home_about_path, class:"glyphicon glyphicon-link" %></li>
                 <li><%= link_to " 商品一覧 " , member_products_path ,class:"glyphicon glyphicon-cutlery"%></li>

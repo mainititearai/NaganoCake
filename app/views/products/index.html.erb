@@ -3,20 +3,7 @@
 <div class="container pull-left">
 	<div class="row">
 		<div class="col-xs-2">
-			<div class="panel panel-default">
-				<div class="panel-heading" style="background-color: black;">
-					<h2 class="panel-title glyphicon glyphicon-th-list" style="color: gray;">ジャンル検索</h2>
-				</div>
-				<div class="panel-body" style="color:black;">
-					<% @genres.each do |genre| %>
-					<% if genre.active? %>
-					<h4>
-						<%=link_to genre.name, member_products_path(genre_id:genre.id),:style=>"color:gray; text-decoration: none;" %>
-					</h4>
-					<% end %>
-					<% end %>
-				</div>
-			</div>
+			<%= render 'layouts/genre', genres:@genres %>
 		</div>
 		<div class="col-xs-10">
 			<h2><%= @name %>一覧<small> (全<%= @count %>件)</small></h2>

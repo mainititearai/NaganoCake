@@ -2,20 +2,7 @@
 <div class="container" style="margin-top: 60px;">
 	<div class="row">
 		<div class="col-xs-2">
-			<div class="panel panel-default">
-				<div class="panel-heading" style="background-color: black;">
-					<h2 class="panel-title glyphicon glyphicon-th-list" style="color: gray;">ジャンル検索</h2>
-				</div>
-				<div class="panel-body" style="color:black;">
-					<% @genres.each do |genre| %>
-					<% if genre.active? %>
-					<h4>
-						<%=link_to genre.name, member_products_path(genre_id:genre.id),:style=>"color:gray; text-decoration: none;" %>
-					</h4>
-					<% end %>
-					<% end %>
-				</div>
-			</div>
+			<%= render 'layouts/genre', genres:@genres %>
 		</div>
 		<div class="col-xs-10">
 			<div style="background: url(/assets/3102265_s.jpg) no-repeat 0% 0%; height: 500px; background-size: cover;" >
@@ -27,7 +14,7 @@
 	</div>
 	<div class="row">
 		<div class="col-xs-offset-2 col-xs-10">
-			<h3>おすすめ商品</h3>
+			<h3>Pick up</h3>
 			<table class="table">
 				<tr>
 					<% @products.each do |product| %>
