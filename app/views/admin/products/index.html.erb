@@ -1,11 +1,10 @@
 <%= render 'layouts/admins_header' %>
 
 <div class="container">
-	<h1>商品一覧画面</h1>
+	<h3><strong>商品一覧画面</strong></h3>
 	<span class="pull-right" style=",text-decoration: none;">
 	<%= link_to '',new_admin_product_path, class: "glyphicon glyphicon-plus",style:"text-decoration:none; font-size: 40px;"%>
 	</span>
-	<h4>
 		<table class="table">
 			<thead>
 				<th>商品ID</th>
@@ -36,6 +35,5 @@
 				<% end %>
 			</tbody>
 		</table>
-	</h4>
 </div>
 <%= render 'layouts/admins_footer' %>
