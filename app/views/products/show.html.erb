@@ -3,24 +3,20 @@
 <div class="container pull-left table-responsive">
 	<div class="row">
 		<div class="col-xs-2">
-			<table class="table table-hover table-striped table-bordered">
-				<thead>
-					<th height="15px" style="padding:0;text-align: center;">
-						<h3>ジャンル検索</h3>
-					</th>
-				</thead>
-				<tbody>
+			<div class="panel panel-default">
+				<div class="panel-heading" style="background-color: black;">
+					<h2 class="panel-title glyphicon glyphicon-th-list" style="color: gray;">ジャンル検索</h2>
+				</div>
+				<div class="panel-body" style="color:black;">
 					<% @genres.each do |genre| %>
-						<% if genre.active? %>
-							<tr>
-								<td>
-									<h4><%=link_to genre.name, member_products_path(genre_id:genre.id) %></h4>
-								</td>
-							</tr>
-						<% end %>
+					<% if genre.active? %>
+					<h4>
+						<%=link_to genre.name, member_products_path(genre_id:genre.id),:style=>"color:gray; text-decoration: none;" %>
+					</h4>
 					<% end %>
-				</tbody>
-			</table>
+					<% end %>
+				</div>
+			</div>
 		</div>
 		<div class="col-xs-7" style="padding-left: 30px; margin-top: 100px;">
 			<br>
