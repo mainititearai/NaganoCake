@@ -1,0 +1,14 @@
+<div class="panel panel-default">
+	<div class="panel-heading" style="background-color: #333333;">
+		<h2 class="panel-title glyphicon glyphicon-th-list" style="color: white;"> ジャンル検索</h2>
+	</div>
+	<div class="panel-body" style="color:#333333;">
+		<% genres.each do |genre| %>
+		<% if genre.active? %>
+		<h4>
+			<%=link_to genre.name, member_products_path(genre_id:genre.id),:class=>"hover1" ,:style=>"color:gray; text-decoration: none;" %>
+		</h4>
+		<% end %>
+		<% end %>
+	</div>
+</div>
