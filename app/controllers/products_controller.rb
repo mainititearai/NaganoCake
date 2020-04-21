@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
 	def show
 		@product = Product.find(params[:id])
 		@cart_item = CartItem.new
-		@genre = set_genres
+		@genres = set_genres
 	end
 
 	private

@@ -3,14 +3,10 @@
 		<div class="row">
 			<%= form_for @product,:url => {:controller => :products,:action => :create} do |f| %>
 			<div class="col-xs-4">
-				<h1>商品登録画面</h1>
-
-
-					<h4><%= f.attachment_field :image %></h4>
+				<h3><strong>商品登録画面</strong></h3>
+					<%= f.attachment_field :image %>
 			</div>
-			<div class="col-xs-5">
-				<br><br><br><br><br>
-				<h4>
+			<div class="col-xs-5" style="margin-top:80px;">
 					商品名　<%= f.text_field :name %><br><br>
 
 					商品説明　 <%= f.text_area :introduction%><br><br>

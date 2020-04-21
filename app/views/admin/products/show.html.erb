@@ -3,29 +3,33 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-4">
-			<h1>商品 詳細画面</h1>
+			<h3><strong>商品 詳細画面</strong></h3>
 
 			<br><br><br><br>
-			<%= attachment_image_tag(@product,:image,:fill,200,200, fallback: "no_image.jpg") %>
+			<%= attachment_image_tag(@product,:image,:fill,200,200, fallback: "no_image.jpg",style: 'margin-left: 50px; border-radius: 30px;') %>
 		</div>
 		<div class="col-xs-5">
 			<h3><%= notice %></h3>
-			<br><br><br><br><br><br><br>
-		<h4>
-			<p>商品名　<%= @product.name %></p><br>
-
-			<p>商品説明　<%= @product.introduction %></p><br>
-
-			<p>ジャンル　 <%= @product.genre.name %></p><br>
-
-			<p>税込価格 (税抜価格)　 <%= (@product.price*1.1).floor %> (<%= @product.price %>)</p>
-
-			<p>販売ステータス　<%= @product.sale_status_i18n %></p>
-		</h4>
+			<table style="margin-top: 130px;">
+				<tr style="height:50px;">
+					<th>商品名　</th><td><%= @product.name %></td>
+				</tr>
+				<tr style="height:50px;">
+					<th>商品説明　</th><td><%= @product.introduction %></td>
+				</tr>
+				<tr style="height:50px;">
+					<th>ジャンル　</th><td><%= @product.genre.name %></td>
+				</tr>
+				<tr style="height:50px;">
+					<th>税込価格 (税抜価格)　</th><td><%= (@product.price*1.1).floor %> (<%= @product.price %>) 円</td>
+				</tr>
+				<tr style="height:50px;">
+					<th>販売ステータス　</th><td><%= @product.sale_status_i18n %></td>
+				</tr>
+			</table>
 		</div>
-		<div class="col-xs-3">
-			<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-			<%= link_to '編集する',edit_admin_product_path(@product),class: "btn btn-default" %>
+		<div class="col-xs-3" style="margin-top: 350px;">
+			<%= link_to '編集する',edit_admin_product_path(@product),class: "btn btn-primary" %>
 		</div>
 	</div>
 </div>
