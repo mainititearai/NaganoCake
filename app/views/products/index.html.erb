@@ -3,24 +3,20 @@
 <div class="container pull-left">
 	<div class="row">
 		<div class="col-xs-2">
-			<table class="table table-hover table-striped table-bordered">
-				<thead>
-					<th height="15px" style="padding:0;text-align: center;">
-						<h3>ジャンル検索</h3>
-					</th>
-				</thead>
-				<tbody>
+			<div class="panel panel-default">
+				<div class="panel-heading" style="background-color: black;">
+					<h2 class="panel-title glyphicon glyphicon-th-list" style="color: gray;">ジャンル検索</h2>
+				</div>
+				<div class="panel-body" style="color:black;">
 					<% @genres.each do |genre| %>
-						<% if genre.active? %>
-							<tr>
-								<td>
-									<h4><%=link_to genre.name, member_products_path(genre_id:genre.id) %></h4>
-								</td>
-							</tr>
-						<% end %>
+					<% if genre.active? %>
+					<h4>
+						<%=link_to genre.name, member_products_path(genre_id:genre.id),:style=>"color:gray; text-decoration: none;" %>
+					</h4>
 					<% end %>
-				</tbody>
-			</table>
+					<% end %>
+				</div>
+			</div>
 		</div>
 		<div class="col-xs-10">
 			<h2><%= @name %>一覧<small> (全<%= @count %>件)</small></h2>
@@ -28,40 +24,40 @@
 				<table>
 					<tr>
 						<% @products.each do |product| %>
-							<% if product.genre.active? %>
-							 	<% if product.id.odd? %>
-									<td>
-										<%= link_to member_product_path(product) do %>
-											<%= attachment_image_tag(product,:image,:fill,200,200, fallback: "no_image.jpg",style: 'border-radius: 30px;margin-right:30px;' )%>
-										<% end %><br>
-										<%= link_to product.name,member_product_path(product) %>
-										<% if product.is_deleted? %>
-											<p style="color: red;"><%= product.sale_status_i18n %></p>
-										<% else %>
-											<p>¥<%= (product.price*1.1).floor %></p>
-										<% end %>
-									</td>
-								<% end %>
+						<% if product.genre.active? %>
+						<% if product.id.odd? %>
+						<td>
+							<%= link_to member_product_path(product) do %>
+							<%= attachment_image_tag(product,:image,:fill,200,200, fallback: "no_image.jpg",style: 'border-radius: 30px;margin-right:30px;' )%>
+							<% end %><br>
+							<%= link_to product.name,member_product_path(product) %>
+							<% if product.is_deleted? %>
+							<p style="color: red;"><%= product.sale_status_i18n %></p>
+							<% else %>
+							<p>¥<%= (product.price*1.1).floor %></p>
 							<% end %>
+						</td>
+						<% end %>
+						<% end %>
 						<% end %>
 					</tr>
 					<tr>
 						<% @products.each do |product| %>
-							<% if product.genre.active? %>
-								<% if product.id.even? %>
-									<td>
-										<%= link_to member_product_path(product) do %>
-											<%= attachment_image_tag(product,:image,:fill,200,200, fallback: "no_image.jpg",style: 'border-radius: 30px;' )%>
-										<% end %><br>
-										<%= link_to product.name,member_product_path(product) %>
-										<% if product.is_deleted? %>
-											<p style="color:red;"><%= product.sale_status_i18n %></p>
-										<% else %>
-											<p>¥<%= (product.price*1.1).floor %></p>
-										<% end %>
-									</td>
-								<% end %>
+						<% if product.genre.active? %>
+						<% if product.id.even? %>
+						<td>
+							<%= link_to member_product_path(product) do %>
+							<%= attachment_image_tag(product,:image,:fill,200,200, fallback: "no_image.jpg",style: 'border-radius: 30px;' )%>
+							<% end %><br>
+							<%= link_to product.name,member_product_path(product) %>
+							<% if product.is_deleted? %>
+							<p style="color:red;"><%= product.sale_status_i18n %></p>
+							<% else %>
+							<p>¥<%= (product.price*1.1).floor %></p>
 							<% end %>
+						</td>
+						<% end %>
+						<% end %>
 						<% end %>
 					</tr>
 				</table>
