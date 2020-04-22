@@ -1,38 +1,38 @@
 <%= render 'layouts/admins_header' %>
 
-<div class="container">
+<div class="container table-responsive border-none">
 	<div class="row">
 		<%= form_for @product,:url => {:controller => :products,:action => :update} do |f| %>
-		<div class="col-xs-4">
-			<h3><strong>商品 編集画面</strong></h3>
-			<%= attachment_image_tag(@product,:image,:fill,200,200, fallback: "no_image.jpg",style: "margin-top:80px;border-radius: 30px;") %>
-			<%= f.attachment_field :image %>
-		</div>
-		<div class="col-xs-5" style="margin-top:140px;">
-			<table>
-				<tr style="height:50px;">
-					<th>商品名　</th><td><%= f.text_field :name, size: "31x1" %></td>
-				</tr>
-				<tr style="height:150px;">
-					<th>商品説明　</th><td><%= f.text_area :introduction, size: "30x10",class: "form-controll" %></td>
-				</tr>
-				<tr style="height:50px;">
-					<th>ジャンル　</th><td><%= f.collection_select :genre_id, Genre.all, :id, :name,{include_blank:"-- 選択してください --"},size: "1x1" %></td>
-				</tr>
-				<tr style="height:50px;">
-					<th>税抜価格　</th><td><%= f.text_field :price, size: "31x1" %>円</td>
-				</tr>
-				<tr style="height:50px;">
-					<th>販売ステータス　</th><td><%= f.select :sale_status,Product.sale_statuses.keys.map{|k|[I18n.t("enums.product.sale_status.#{k}"),k]} %></td>
-				</tr>
-			</table>
-			<%= f.label :recommend_status,:おすすめに設定 %>
-			<%= f.radio_button :recommend_status,:recommend %>
-			<%= f.label :recommend_status,:おすすめに設定しない %>
-			<%= f.radio_button :recommend_status,:unrecommend %>
-		</div>
-		<div class="col-xs-3">
-				<%= f.submit '変更を保存', class: "btn btn-primary",style: "margin-top:550px;" %>
+			<div class="col-xs-5">
+				<h3><strong>商品 編集画面</strong></h3>
+				<%= attachment_image_tag(@product,:image,:fill,200,200, fallback: "no_image.jpg",style: "margin-top:80px;border-radius: 30px;") %>
+				<%= f.attachment_field :image %>
+			</div>
+			<div class="col-xs-5" style="margin-top:140px;">
+				<table>
+					<tr style="height:50px;">
+						<th>商品名　</th><td><%= f.text_field :name, size: "31x1" %></td>
+					</tr>
+					<tr style="height:150px;">
+						<th>商品説明　</th><td><%= f.text_area :introduction, size: "30x10",class: "form-controll" %></td>
+					</tr>
+					<tr style="height:50px;">
+						<th>ジャンル　</th><td><%= f.collection_select :genre_id, Genre.all, :id, :name,{include_blank:"-- 選択してください --"},size: "1x1" %></td>
+					</tr>
+					<tr style="height:50px;">
+						<th>税抜価格　</th><td><%= f.text_field :price, size: "31x1" %>円</td>
+					</tr>
+					<tr style="height:50px;">
+						<th>販売ステータス　</th><td><%= f.select :sale_status,Product.sale_statuses.keys.map{|k|[I18n.t("enums.product.sale_status.#{k}"),k]} %></td>
+					</tr>
+				</table>
+				<%= f.label :recommend_status,:おすすめに設定 %>
+				<%= f.radio_button :recommend_status,:recommend %>
+				<%= f.label :recommend_status,:おすすめに設定しない %>
+				<%= f.radio_button :recommend_status,:unrecommend %>
+			</div>
+			<div class="col-xs-2">
+				<%= f.submit '変更を保存', class: "btn btn-default",style: "margin-top:550px;" %>
 			</div>
 		<% end %>
 	</div>
