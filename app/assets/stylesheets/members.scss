@@ -1,3 +1,70 @@
 // Place all the styles related to the members controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+table mypage{
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table tr.mypage{
+  border-bottom: solid 2px white;
+}
+
+table tr.mypage:last-child{
+  border-bottom: none;
+}
+
+table th.mypage{
+  position: relative;
+  text-align: left;
+  width: 30%;
+  background-color: #333333;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+}
+
+table th.mypage:after{
+  display: block;
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  top:calc(50% - 10px);
+  right:-10px;
+  border-left: 10px solid #333333;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+}
+
+td.mypage{
+  text-align: left;
+  width: 70%;
+  text-align: center;
+  background-color: #eee;
+  padding: 10px 0;
+}
+
+
+.btn-shine {
+  color: #fff;
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  outline: 1px solid;
+  outline-color: rgba(255, 255, 255, 0.5);
+  outline-offset: 0px;
+  text-shadow: none;
+  transition: all 1.2s cubic-bezier(0.2, 1, 0.2, 1);
+}
+.btn-shine:hover {
+  color: #FFF;
+  border-color: #FFF;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.2);
+  outline-color: transparent;
+  outline-offset: 12px;
+  text-shadow: 2px 2px 3px #000;
+}

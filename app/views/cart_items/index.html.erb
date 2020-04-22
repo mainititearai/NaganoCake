@@ -4,7 +4,7 @@
 		<div class="log-xs-12">
 			<h4>ショッピングカート</h4>
 			<p class="text-right">
-				<button type="button" class="btn btn-danger btn-sm" ><%= link_to "カートを空にする",cart_items_destroy_all_member_path, method: :delete, :style=>"color:white;"%></button></p>
+				<button type="button" class="btn btn-danger btn-sm btn-shine" ><%= link_to "カートを空にする",cart_items_destroy_all_member_path, method: :delete, :style=>"color:white; text-decoration: none;"%></button></p>
 				<table class="table table-bordered">
 					<thead>
 						<tr class="text-center">
@@ -23,11 +23,11 @@
 							<td width="15%">
 								<%= form_for cart_item, url:member_cart_item_path(cart_item.id), method: :patch do |f| %>
 								<%= f.text_field :quantity, :size=>4 %>
-								<%= f.submit("変更", class: "btn btn-primary btn-sm") %>
+								<%= f.submit("変更", class: "btn1 btn-sm btn-primary btn-shine", :style=>"color:white;") %>
 								<% end %>
 							</td>
 							<td width="15%"><%= (cart_item.product.price*1.1*cart_item.quantity).floor %>円</td>
-							<td width="15%"><button type="button" class="btn btn-danger btn-sm" ><%= link_to "削除", member_cart_item_path(cart_item), method: :delete, :style=>"color:white;"%></button>
+							<td width="15%"><button type="button" class="btn btn-danger btn-sm btn-shine" ><%= link_to "削除", member_cart_item_path(cart_item), method: :delete, :style=>"color:white; text-decoration: none;"%></button>
 								<% sab_total = (cart_item.product.price*1.1*cart_item.quantity).floor %>
 								<% @sum += sab_total %>
 							</tr>
@@ -37,14 +37,22 @@
 				</div>
 			</div>
 			<div class="row">
-					<table class="table table-bordered log-xs-offset-8 log-xs-4">
+				<div class="constantly col-xs-2" style="margin-top:10px;">
+				<%= link_to "買い物を続ける", member_products_path, class:"btn btn-shine", :style=>"background-color:#ffb6c1; border:none;"%>
+			    </div>
+				<div class="col-xs-offset-6 col-xs-4">
+					<table class="table2 table-bordered", style="margin-left: 43px;">
 						<tr>
-							<th>合計金額</th>
-							<th><%= @sum %>円</th>
+							<td width="15%">合計金額</td>
+							<td width="15%"><%= @sum %>円</td>
 						</tr>
 					</table>
 				</div>
-				<button type="button" class="btn btn-primary" ><%= link_to "買い物を続ける", member_products_path, :style=>"color:white;" %></button>
-				<button type="button" class="btn btn-info btn-lg" ><%= link_to "情報入力に進む", new_member_order_path, :style=>"color:white;" %></button>
+			</div>
+
+				<div class="text-center" style="margin-top: 20px;">
+			    <%= link_to " 情報入力に進む", new_member_order_path, class:"btn btn-shine btn-lg glyphicon glyphicon-check", :style=>"background-color:#ffb6c1; border:none;" %>
+			</div>
+			    <tr>
 		</div>
 		<%= render 'layouts/members_footer' %>
