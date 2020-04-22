@@ -1,6 +1,6 @@
 <%= render 'layouts/members_header' %>
 <div class="container">
-
+  <div class="row">
 
   <h1>配送登録/一覧</h1>
 
@@ -42,9 +42,9 @@
         <td width="20%"><%= link_to "編集する",edit_member_shipping_address_path(shipping_address.id)  ,class: "btn-sm btn-primary"%><%= link_to "消去する" ,member_shipping_address_path(shipping_address.id) ,class: "btn-sm btn-danger" ,method: :delete %></td>
       </tr>
       <% end %>
+     </tbody>
     </table>
-  </tbody>
 
-
+</div>
 </div>
 <%= render 'layouts/members_footer' %>
