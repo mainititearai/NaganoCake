@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
 	before_action :cart_items_blank, only: [:new, :confirm]
 
 	def index
-		@orders = current_member.orders.all
+		@orders = current_member.orders.all.reverse_order
 		@sum = 0
 	end
 

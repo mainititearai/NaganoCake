@@ -20,7 +20,7 @@
 						<td>〒<%= order.postcode %><br>住所：<%= order.address %><br>氏名：<%= order.name %></td>
 						<td>
 							<% order.order_items.each do |order_item| %>
-							<%= order_item.product.name %>
+							<%= order_item.product.name %><br>
 							<% end %>
 						</td>
 						<td>

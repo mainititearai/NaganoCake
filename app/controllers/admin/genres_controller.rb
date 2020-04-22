@@ -2,7 +2,7 @@ class Admin::GenresController < ApplicationController
 	before_action :authenticate_admin!
 
 	def index
-		@genres = Genre.all
+		@genres = Genre.all.reverse_order
 		@genre = Genre.new
 	end
 

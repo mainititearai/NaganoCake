@@ -22,7 +22,7 @@ ja:
       order_status:
         waiting: "入金待ち"
         confirm: "入金確認"
-        in_production: "製作開始"
+        in_production: "製作中"
         preparation: "発送準備中"
         shipped: "発送済み"
 
