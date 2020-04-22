@@ -1,40 +1,42 @@
 <%= render 'layouts/members_header' %>
 
 <div class="container">
+		<h3>注文履歴一覧</h3>
 	<div class="row">
-		<h1>注文履歴一覧</h1>
-		<table class="table">
-			<thead>
-				<th>注文日</th>
-				<th>配送先</th>
-				<th>注文商品</th>
-				<th>支払い金額</th>
-				<th>ステータス</th>
-				<th>注文詳細</th>
-			</thead>
-			<% @orders.each do |order| %>
-			<tbody>
-				<tr>
-					<td><%= order.created_at %></td>
-					<td><%= order.postcode %><br><%= order.address %><br><%= order.name %></td>
-					<td>
-						<% order.order_items.each do |order_item| %>
-						<%= order_item.product.name %>
-						<% end %>
-					</td>
-					<td>
-						<% order.order_items.each do |order_item| %>
-						<% sab_total = (order_item.product.price*1.1*order_item.quantity).floor %>
-						<% @sum += sab_total %>
-						<% end %>
-						<%= @sum+800 %>
-					</td>
-					<td><%= order.order_status_i18n %></td>
-					<td><%= link_to '表示する',member_order_path(order) %></td>
-				</tr>
-			</tbody>
-			<% end %>
-		</table>
+		<div class="col-xs-10 col-xs-offset-1">
+			<table class="table table">
+				<thead style="background-color: #333333; color:white;">
+					<th>注文日</th>
+					<th>配送先</th>
+					<th>注文商品</th>
+					<th>支払い金額</th>
+					<th>注文状況</th>
+					<th>注文詳細</th>
+				</thead>
+				<% @orders.each do |order| %>
+				<tbody>
+					<tr>
+						<td><%= order.created_at.to_s(:datetime_jp) %></td>
+						<td>〒<%= order.postcode %><br>住所：<%= order.address %><br>氏名：<%= order.name %></td>
+						<td>
+							<% order.order_items.each do |order_item| %>
+							<%= order_item.product.name %>
+							<% end %>
+						</td>
+						<td>
+							<% order.order_items.each do |order_item| %>
+							<% sab_total = (order_item.product.price*1.1*order_item.quantity).floor %>
+							<% @sum += sab_total %>
+							<% end %>
+							¥<%= @sum+800 %>
+						</td>
+						<td><%= order.order_status_i18n %></td>
+						<td><%= link_to '表示する',member_order_path(order) %></td>
+					</tr>
+				</tbody>
+				<% end %>
+			</table>
+		</div>
 	</div>
 </div>
 <%= render 'layouts/members_footer' %>

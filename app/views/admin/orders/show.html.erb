@@ -20,7 +20,7 @@
 		              <td><%= @order.payment_method_i18n %></td>
 		            </tr>
 		            <tr>
-		              <th class="info">注文ステータス</th>
+		              <th class="info">注文状況</th>
 		              <td><%= form_for @order,:url => {:controller => :orders,:action => :update} do |f| %>
 							<%= f.select :order_status,Order.order_statuses.keys.map{|k| [I18n.t("enums.order.order_status.#{k}"),k]} %>
 							<%= f.submit "更新", class:" btn btn-primary glyphicon glyphicon-wrench" %>
@@ -38,7 +38,7 @@
 						      			<th>単価（税込）</th>
 						      			<th>数量</th>
 						      			<th>小計</th>
-						      			<th>製作ステータス</th>
+						      			<th>製作状況</th>
 						      		</tr>
 						      	</thead>
 						      	<% @order_items.each do |order_item| %>
