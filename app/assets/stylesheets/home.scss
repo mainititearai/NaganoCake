@@ -14,3 +14,18 @@
 .panel-default{
 	width: 180px !important;
 }
+@font-face{
+   font-family: "oligopoly";
+   src: font-url('/assets/Butchery.ttf');
+ }
+.introduction{
+	font-family: "oligopoly";
+	font-size: 120px;
+	padding-right: 180px;
+	padding-top: 30px;
+	color: white;
+}
+.introduction1{
+	font-family: "oligopoly";
+	font-size: 100px;
+}
