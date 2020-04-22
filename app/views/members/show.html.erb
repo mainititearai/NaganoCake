@@ -40,8 +40,7 @@
               <th>メールアドレス</th>
               <td><%= @member.email %></td>
             </tr>
-            <tr>
-            </tr>
+ 
           </tbody>
         </table>
       </div>
@@ -52,13 +51,13 @@
         <table class="table table-borderless">
           <tr>
             <th width=30%>配送先</th>
-            <th width=70%><%= link_to "一覧を見る", member_shipping_addresses_path, class:"col-3 btn btn-primary" %>
+            <td width=70%><%= link_to "一覧を見る", member_shipping_addresses_path, class:"col-3 btn btn-primary" %>
             </th>
           </tr>
 
           <tr>
             <th>注文履歴</th>
-            <th><%= link_to "一覧を見る", member_orders_path, class:"col-3 btn btn-primary" %></th>
+            <td><%= link_to "一覧を見る", member_orders_path, class:"col-3 btn btn-primary" %></th>
           </tr>
         </table>
       </div>
