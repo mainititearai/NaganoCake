@@ -2,7 +2,7 @@ class ShippingAddressesController < ApplicationController
 
 	def index
 	  @member = current_member
-	  @shipping_addresses = @member.shipping_addresses.all
+	  @shipping_addresses = @member.shipping_addresses.all.reverse_order
       @shipping_address = ShippingAddress.new
 	end
 

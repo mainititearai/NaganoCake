@@ -10,9 +10,9 @@
 					<th class="product-show-th">注文日</th><td><%= @order.created_at.to_s(:datetime_jp) %></td>
 				</tr>
 				<tr>
-					<th class="product-show-th">配送先</th><td><%= @order.postcode %>
-								  <br><%= @order.address %>
-								  <br><%= @order.name %></td>
+					<th class="product-show-th">配送先</th><td>〒<%= @order.postcode %>
+								  <br>住所：<%= @order.address %>
+								  <br>宛名：<%= @order.name %></td>
 				</tr>
 				<tr>
 					<th class="product-show-th">支払い方法</th><td><%= @order.payment_method_i18n %></td>
