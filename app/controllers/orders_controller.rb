@@ -17,19 +17,23 @@ class OrdersController < ApplicationController
 
 	def confirm
 		@order = Order.new
+		@member = current_member.id
 		@order.payment_method = params[:order_info][:payment_method]
 		@sum = 0
 		#自分の住所
 		if params[:order_info][:address_kind] == "self_address"
+		@select = "self"
 		@order.address = current_member.address
 		@order.postcode = current_member.postcode
 		@order.name = current_member.last_name+current_member.first_name
 		elsif params[:order_info][:address_kind] == "other_address"
+		@select = "other"
 		@shipping_address = ShippingAddress.find(params[:order_info][:other_address_id])
 		@order.address = @shipping_address.address
 		@order.postcode = @shipping_address.postcode
 		@order.name = @shipping_address.name
 		elsif params[:order_info][:address_kind] == "new_address"
+		@select = "new"
 		@order.address = params[:order_info][:new_address]
 		@order.postcode = params[:order_info][:new_postcode]
 		@order.name = params[:order_info][:new_name]
@@ -40,14 +44,17 @@ class OrdersController < ApplicationController
 	def create
 		@order = Order.new(order_params)
 		@member = current_member
+		@select = params[:select]
 		@order.save
 		#ここに新規お届け先を登録した場合、配送先一覧に保存される動きを追加する！！！
+		if @select == "new"
 		@shipping_address = ShippingAddress.new
 		@shipping_address.member_id = current_member.id
 		@shipping_address.name = @order.name
 		@shipping_address.postcode = @order.postcode
 		@shipping_address.address = @order.address
 		@shipping_address.save
+		end
 		@cart_items = @member.cart_items.all
 		# 一つ上で全件取得したquantityを１件ずつ取得するeach文
 		@cart_items.each do |cart_item|
