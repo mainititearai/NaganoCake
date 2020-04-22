@@ -2,68 +2,73 @@
 <div class="container">
 	<div class="row">
 		<div class="log-xs-12">
-			<h4>ショッピングカート</h4>
-			<% if @cart_items.present? %>
-			<p class="text-right">
-				<button type="button" class="btn btn-danger btn-sm btn-shine" ><%= link_to "カートを空にする",cart_items_destroy_all_member_path, method: :delete, :style=>"color:white; text-decoration: none;"%></button></p>
-				<table class="table table-bordered">
-					<thead>
-						<tr class="text-center" style="background-color: #333333; color: white;">
-							<th>商品名</th>
-							<th>単価(税込)</th>
-							<th>数量</th>
-							<th>小計</th>
-							<th></th>
-						</tr>
-					</thead>
-					<tbody>
-						<% @cart_items.each do |cart_item| %>
-						<tr>
-							<th><%= attachment_image_tag cart_item.product, :image, :fill, 50, 50 %><%= cart_item.product.name %></th>
-							<td width="15%"><%= (cart_item.product.price*1.1).floor %>円</td>
-							<td width="15%">
-								<%= form_for cart_item, url:member_cart_item_path(cart_item.id), method: :patch do |f| %>
-								<%= f.text_field :quantity, :size=>4 %>
-								<%= f.submit("変更", class: "btn1 btn-sm btn-primary btn-shine", :style=>"color:white;") %>
-								<% end %>
-							</td>
-							<td width="15%"><%= (cart_item.product.price*1.1*cart_item.quantity).floor %>円</td>
-							<td width="15%"><button type="button" class="btn btn-danger btn-sm btn-shine" ><%= link_to "削除", member_cart_item_path(cart_item), method: :delete, :style=>"color:white; text-decoration: none;"%></button>
-								<% sab_total = (cart_item.product.price*1.1*cart_item.quantity).floor %>
-								<% @sum += sab_total %>
+				<h4>ショッピングカート</h4>
+				<% if @cart_items.present? %>
+				<p class="text-right">
+					<button type="button" class="btn btn-danger btn-sm btn-shine" ><%= link_to "カートを空にする",cart_items_destroy_all_member_path, method: :delete, :style=>"color:white; text-decoration: none;"%></button></p>
+					<table class="table table-bordered">
+						<thead>
+							<tr class="text-center" style="background-color: #333333; color: white;">
+								<th>商品名</th>
+								<th>単価(税込)</th>
+								<th>数量</th>
+								<th>小計</th>
+								<th></th>
 							</tr>
-							<% end %>
-						</tbody>
-					</table>
+						</thead>
+						<tbody>
+							<% @cart_items.each do |cart_item| %>
+							<tr>
+								<th><%= attachment_image_tag cart_item.product, :image, :fill, 50, 50 %><%= cart_item.product.name %></th>
+								<td width="15%"><%= (cart_item.product.price*1.1).floor %>円</td>
+								<td width="15%">
+									<%= form_for cart_item, url:member_cart_item_path(cart_item.id), method: :patch do |f| %>
+									<%= f.text_field :quantity, :size=>4 %>
+									<%= f.submit("変更", class: "btn1 btn-sm btn-primary btn-shine", :style=>"color:white;") %>
+									<% end %>
+								</td>
+								<td width="15%"><%= (cart_item.product.price*1.1*cart_item.quantity).floor %>円</td>
+								<td width="15%"><button type="button" class="btn btn-danger btn-sm btn-shine" ><%= link_to "削除", member_cart_item_path(cart_item), method: :delete, :style=>"color:white; text-decoration: none;"%></button>
+									<% sab_total = (cart_item.product.price*1.1*cart_item.quantity).floor %>
+									<% @sum += sab_total %>
+								</tr>
+								<% end %>
+							</tbody>
+						</table>
+					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="constantly col-xs-2" style="margin-top:10px;">
-					<%= link_to "買い物を続ける", member_products_path, class:"btn btn-shine", :style=>"background-color:#ffb6c1; border:none;"%>
+				<div class="row">
+					<div class="constantly col-xs-2" style="margin-top:10px;">
+						<%= link_to "買い物を続ける", member_products_path, class:"btn btn-shine", :style=>"background-color:#ffb6c1; border:none;"%>
+					</div>
+					<div class="col-xs-offset-7 col-xs-3">
+						<table class="table2 table-bordered text-center", style="margin-left: 43px;" >
+							<tr>
+								<th class="text-center"  width="5%" style="background-color: #333333; color: white;">合計金額</th>
+							</tr>
+							<td><%= @sum %>円</td>
+							<tr>
+							</tr>
+						</table>
+					</div>
 				</div>
-				<div class="col-xs-offset-7 col-xs-3">
-					<table class="table2 table-bordered text-center", style="margin-left: 43px;" >
-						<tr>
-							<th class="text-center"  width="5%" style="background-color: #333333; color: white;">合計金額</th>
-						</tr>
-						<td><%= @sum %>円</td>
-						<tr>
-						</tr>
-					</table>
-				</div>
-			</div>
 
-			<div class="text-center" style="margin-top: 20px;">
-				<%= link_to " 情報入力に進む", new_member_order_path, class:"btn btn-shine btn-lg glyphicon glyphicon-check", :style=>"background-color:#ffb6c1; border:none;" %>
-			</div>
-			<% else %>
-			<h2 class="text-center">カートは空です</h2>
-			    <div class="constantly text-center" style="margin-top:10px;">
-					<%= link_to "買い物を続ける", member_products_path, class:"btn btn-shine", :style=>"background-color:#ffb6c1; border:none;"%>
+				<div class="text-center" style="margin-top: 20px;">
+					<%= link_to " 情報入力に進む", new_member_order_path, class:"btn btn-shine btn-lg glyphicon glyphicon-check", :style=>"background-color:#ffb6c1; border:none;" %>
 				</div>
-			<% end %>
+				<% else %>
+				<div class="text-center">
+				<h2 class="cart-blank-text">カートの中身は空です</h2>
+					<br>
+						<img alt="LOGO" src="/assets/cart-blank.png" style="height: 300px; margin:15px auto;">
+					</div>
+				    <div class="constantly text-center" style="margin-top:10px;">
+						<br><%= link_to "買い物を続ける", member_products_path, class:"btn btn-shine", :style=>"background-color:#ffb6c1; border:none;"%>
+					</div>
+				</div>
+				<% end %>
+			</div>
 		</div>
 	</div>
-</div>
 </div>
 <%= render 'layouts/members_footer' %>
