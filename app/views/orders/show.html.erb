@@ -7,7 +7,7 @@
 			<h3>注文情報</h3>
 			<table class="table">
 				<tr>
-					<th class="product-show-th">注文日</th><td><%= @order.created_at %></td>
+					<th class="product-show-th">注文日</th><td><%= @order.created_at.to_s(:datetime_jp) %></td>
 				</tr>
 				<tr>
 					<th class="product-show-th">配送先</th><td><%= @order.postcode %>

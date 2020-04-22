@@ -16,7 +16,7 @@
 				<% @orders.each do |order| %>
 				<tbody>
 					<tr>
-						<td><%= order.created_at %></td>
+						<td><%= order.created_at.to_s(:datetime_jp) %></td>
 						<td>〒<%= order.postcode %><br>住所：<%= order.address %><br>氏名：<%= order.name %></td>
 						<td>
 							<% order.order_items.each do |order_item| %>
