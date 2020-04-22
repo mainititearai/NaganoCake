@@ -1,5 +1,5 @@
 
-<header style="margin-bottom: 70px;">
+<header style="width:100% margin-bottom: 30px;">
 	<div class="jumbotron" style="background:url(/assets/header2.jpg); height: 350px; background-size: cover; margin-bottom:0px;">
 			<img alt="LOGO" src="/assets/logo2.png" style="height: 300px; position: relative;">
 	</div>
@@ -17,28 +17,29 @@
 		</div>
 		<div class="collapse navbar-collapse" id="navbarEexample7">
 			<ul class="nav navbar-nav">
-				<li><%= link_to " ホーム", root_path, class:"glyphicon glyphicon-home" %></li>
+				<li><%= link_to " Home", root_path, class:"glyphicon glyphicon-home" %></li>
 				<% if member_signed_in? %>
-				<li><%= link_to " マイページ",member_path, class:"glyphicon glyphicon-user" %></li>
-				<li><%= link_to " 商品一覧", member_products_path ,class:"glyphicon glyphicon-cutlery"
+				<li><%= link_to " MyPage",member_path, class:"glyphicon glyphicon-user" %></li>
+				<li><%= link_to " Sweets", member_products_path ,class:"glyphicon glyphicon-cutlery"
 
 %></li>
-				<li><%= link_to " カート", member_cart_items_path, class:"glyphicon glyphicon-shopping-cart"%></li>
-				<li><%= link_to " ログアウト", destroy_member_session_path, method: :delete ,class:"glyphicon glyphicon-log-out" %></li>
+				<li><%= link_to " Cart", member_cart_items_path, class:"glyphicon glyphicon-shopping-cart"%></li>
+				<li><%= link_to " Logout", destroy_member_session_path, method: :delete ,class:"glyphicon glyphicon-log-out" %></li>
 
+				<p class="navbar-text" style="margin-left: 200px;">ようこそ ゲスト さん。</p>
 				<% else %>
-				<li><%= link_to " お店紹介 ", home_about_path, class:"glyphicon glyphicon-link" %></li>
-                <li><%= link_to " 商品一覧 " , member_products_path ,class:"glyphicon glyphicon-cutlery"%></li>
-                <li><%= link_to " 新規登録 " , new_member_registration_path, class:"glyphicon glyphicon-edit" %></li>
-                <li><%= link_to " ログイン" , new_member_session_path, class:"glyphicon glyphicon-log-in" %></li>
+				<li><%= link_to " About ", home_about_path, class:"glyphicon glyphicon-link" %></li>
+                <li><%= link_to " Sweets " , member_products_path ,class:"glyphicon glyphicon-cutlery"%></li>
+                <li><%= link_to " SignUp " , new_member_registration_path, class:"glyphicon glyphicon-edit" %></li>
+                <li><%= link_to " Login" , new_member_session_path, class:"glyphicon glyphicon-log-in" %></li>
                 <% end %>
 			</ul>
 
 				<form class="navbar-form navbar-right" role="search">
 				<div class="form-group">
-					<input type="text" class="form-control" placeholder="検索キーワード">
+					<input type="text" class="form-control" placeholder="Sweets for search">
 				</div>
-				<button type="submit" class="btn btn-default">検索</button>
+				<button type="submit" class="btn btn-default">Search</button>
 				</form>
 
 		</div>
