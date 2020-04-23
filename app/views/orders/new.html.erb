@@ -51,14 +51,14 @@
 						<td style="padding-bottom: 10px;">
 							<%= radio_button :order_info, :address_kind, :new_address %>
         					<strong>新しいお届け先</strong><br>
-							　郵便番号(ハイフンなし)<%= text_field :order_info, :new_postcode %><br/>
-							　住所 <%= text_field :order_info, :new_address %><br/>
-							　宛名 <%= text_field :order_info, :new_name %>
+							　郵便番号(ハイフンなし)<%= text_field :order_info, :new_postcode,auto_focus:true,class:"form-control" %>
+							　住所<%= text_field :order_info, :new_address,auto_focus:true,class:"form-control" %>
+							　宛名<%= text_field :order_info, :new_name,auto_focus:true,class:"form-control" %>
 						</td>
 					</tr>
 				</table>
 			</div>
-			<div class="col-xs-4 table-responsive border-none" style="margin-top: 150px;text-align:center;">
+			<div class="col-xs-4 table-responsive border-none" style="margin-top: 265px;text-align:center;">
 				<%= submit_tag ("確認画面へ進む"),class: "btn btn-shine btn-lg", style:"background-color:#ffb6c1;color: #fff;" %>
 			</div>
 		</div>
