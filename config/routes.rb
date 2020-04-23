@@ -9,8 +9,8 @@ devise_for :admins, controllers: {
 namespace :admin do
 	root 'home#top'
 	resources :members, only: [:index,:show,:edit,:update]
-	resources :products, only: [:index,:new,:create,:show,:edit,:update]
-	resources :genres, only: [:index,:create,:edit,:update]
+	resources :products, only: [:index,:new,:create,:show,:edit,:update,:destroy]
+	resources :genres, only: [:index,:create,:edit,:update,:destroy]
 	resources :orders, only: [:index,:show,:update]
 	patch 'order_items/:id' => 'orders#item_update'
 	put 'order_items/:id' => 'orders#item_update'
