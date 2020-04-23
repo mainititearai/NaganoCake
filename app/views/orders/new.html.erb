@@ -38,14 +38,16 @@
 							　<%= current_member.postcode %><%= current_member.address %><%= current_member.last_name %><%= current_member.first_name %>
 						</td>
 					</tr>
+					<% if @shipping_addresses.present? %>
 					<tr>
 						<th></th>
 						<td style="padding-bottom: 10px;">
         					<%= radio_button :order_info, :address_kind, :other_address %>
         					<strong>登録済住所から選択</strong><br>
-							　<%= collection_select :order_info, :other_address_id, ShippingAddress.all, :id, :postcode_address_name %>
+							　<%= collection_select :order_info, :other_address_id, @shipping_addresses.all, :id, :postcode_address_name %>
 						</td>
 					</tr>
+					<% end %>
 					<tr>
 						<th></th>
 						<td style="padding-bottom: 10px;">
