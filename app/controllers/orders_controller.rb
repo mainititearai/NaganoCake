@@ -16,6 +16,7 @@ class OrdersController < ApplicationController
 
 	def new
 		@order = Order.new
+		@shipping_addresses = ShippingAddress.where(member_id:current_member.id)
 	end
 
 	def confirm
