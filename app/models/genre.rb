@@ -11,5 +11,4 @@ class Genre < ApplicationRecord
 			active
 		end
 	end
-
 end

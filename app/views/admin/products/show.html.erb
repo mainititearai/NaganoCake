@@ -12,19 +12,19 @@
 			<h3><%= notice %></h3>
 			<table style="margin-top: 130px;">
 				<tr style="height:50px;">
-					<th>商品名　</th><td><%= @product.name %></td>
+					<th>商品名</th><td><%= @product.name %></td>
 				</tr>
 				<tr style="height:50px;">
-					<th>商品説明　</th><td><%= @product.introduction %></td>
+					<th>商品説明</th><td><%= @product.introduction %></td>
 				</tr>
 				<tr style="height:50px;">
-					<th>ジャンル　</th><td><%= @product.genre.name %></td>
+					<th>ジャンル</th><td><%= @product.genre.name %></td>
 				</tr>
 				<tr style="height:50px;">
-					<th>税込価格 (税抜価格)　</th><td><%= (@product.price*1.1).floor %> (<%= @product.price %>) 円</td>
+					<th>税込価格 (税抜価格)</th><td><%= (@product.price*1.1).floor %> (<%= @product.price %>) 円</td>
 				</tr>
 				<tr style="height:50px;">
-					<th>販売ステータス　</th><td><%= @product.sale_status_i18n %></td>
+					<th>販売ステータス</th><td><%= @product.sale_status_i18n %></td>
 				</tr>
 			</table>
 		</div>
