@@ -1,19 +1,20 @@
 <%= render 'layouts/admins_header' %>
 
 <div class="container">
-	<h3>ジャンル編集画面</h3>
-	<br>
-	<br>
-	<p><%= notice %></p>
+	<h2>ジャンル編集画面</h2>
 	<div class="row">
+	<p><%= notice %></p>
+		<div class="col-xs-6 col-xs-offset-1">
 		<%= form_for Genre.find(params[:id]), :url => {:controller => :genres, :action => :update} do |f| %>
-			ジャンル　
-			<%= f.text_field :name %>
-			<%= f.label :valid_status,:有効 %>
-			<%= f.radio_button :valid_status,:active %>
-			<%= f.label :valid_status,:無効 %>
-			<%= f.radio_button :valid_status,:is_deleted %>
-			<%= f.submit '変更を保存する', class: "btn btn-default" %>
+			ジャンル
+				<%= f.label :ジャンル名 %>
+				<%= f.text_field :name ,class:"form-control" ,:style=>"width:300px;" %>
+				<%= f.label :valid_status,:有効 %>
+				<%= f.radio_button :valid_status,:active, checked: 'checked' %>
+				<%= f.label :valid_status,:無効 %>
+				<%= f.radio_button :valid_status,:is_deleted %>
+				<%= f.submit '更新する', class:" btn btn-shine ", :style=>"background-color:#ffb6c1; border:none; width:120px; margin-left:66px; margin-top:20px;"%>
 		<% end %>
+		</div>
 	</div>
 </div>

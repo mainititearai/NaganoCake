@@ -1,6 +1,6 @@
 <%= render 'layouts/admins_header' %>
 
-<div class="container">
+<div class="container" style="margin-bottom: 70px;">
 	<h3>注文詳細</h3>
 	<br><div class="row">
 		<div class="col-xs-7 col-xs-offset-0">
@@ -8,23 +8,24 @@
 			 <table class="table table-bordered">
 		          <tbody>
 		          	<tr>
-		          	  <th width="19%" class="info">購入者</th>
+		          	  <th width="19%"  style="background-color: #333333; color: white;">購入者</th>
 		          	  <td width="75%"><%= link_to @order.name, admin_member_path(@order.member_id) %></td>
 		          	</tr>
 		            <tr>
-		              <th class="info class="info"">配送先</th>
+		              <th style="background-color: #333333; color: white;">配送先</th>
 		              <td>〒<%= @order.postcode %>
 		              	<br>住所：<%= @order.address %>
 		              	<br>宛名：<%= @order.name %></td>
 		            </tr>
 		            <tr>
-		              <th class="info">支払い方法</th>
+		              <th style="background-color: #333333; color: white;">支払い方法</th>
 		              <td><%= @order.payment_method_i18n %></td>
 		            </tr>
 		            <tr>
-		              <th class="info">注文状況</th>
+		              <th style="background-color: #333333; color: white;">注文状況</th>
 		              <td><%= form_for @order,:url => {:controller => :orders,:action => :update} do |f| %>
-							<%= f.select :order_status,Order.order_statuses.keys.map{|k| [I18n.t("enums.order.order_status.#{k}"),k]} %>
+
+							<%= f.select :order_status,Order.order_statuses.keys.map{|k| [I18n.t("enums.order.order_status.#{k}"),k]}, class:"form-control" %>
 							<%= f.submit "更新", class:" btn btn-primary glyphicon glyphicon-wrench" %>
 							<% end %></td>
 		            </tr>
@@ -66,7 +67,7 @@
 							 <br /><br /><br /><br /><table class="table table-bordered">
 						          <tbody>
 						          	<tr>
-						          	  <th width="30%" class="warning">商品合計</th>
+						          	  <th width="30%" style="background-color: #333333; color: white;">商品合計</th>
 						          	  <td width="50%" class="text-center">
 						          	  		<% @order_items.each do |order_item| %>
 						          	  		<% sab_total = (order_item.price*order_item.quantity).floor %>
@@ -75,11 +76,11 @@
 											<%= @sum %>円</td>
 						          	</tr>
 						            <tr>
-						              <th class="warning">送料</th>
+						              <th style="background-color: #333333; color: white;">送料</th>
 						              <td class="text-center">800円</td>
 						            </tr>
 						            <tr>
-						              <th class="warning">請求合計金額</th>
+						              <th style="background-color: #333333; color: white;">請求合計金額</th>
 						              <td class="text-center">
 											<%= (@sum*1.1+800).floor %>円
 									  </td>
@@ -91,6 +92,3 @@
 
 	</div>
 </div>
-
-
-<%= render 'layouts/admins_footer' %>

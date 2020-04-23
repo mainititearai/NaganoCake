@@ -1,11 +1,18 @@
 <%= render 'layouts/admins_header' %>
 <div class="container">
-	<h3>管理者画面</h3>
 
-
-	<p>本日の注文件数は
-		<%= link_to admin_orders_path do %>
-		<%= @orders.count %>
-		<% end %>件</p>
+	<div class="row">
+		<div class="col-xs-2">
+			<h2>管理者画面</h2>
+		</div>
+		<div>
+		<img alt="LOGO" src="/assets/logo2.png" style="height: 80px; ">
+		</div>
 	</div>
-	<%= render 'layouts/admins_footer' %>
+
+			<h3 style="margin-left: 30px;">本日の注文件数は
+				<%= link_to admin_orders_path do %>
+				<%= @orders.count %>
+				<% end %>件</h3>
+</div>
+
