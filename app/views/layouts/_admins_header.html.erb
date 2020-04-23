@@ -1,5 +1,5 @@
-<header>
-    <nav class="navbar navbar-default" style="height: 150px;">
+<header style="margin-bottom: 30px;">
+ <!--    <nav class="navbar navbar-default" style="height: 150px;">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample3">
@@ -34,6 +34,36 @@
                 </div>
                 <button type="submit" class="btn btn-default">検索</button>
             </form>
+        </div>
+    </div>
+</nav> -->
+
+    <nav class="navbar navbar-default" style="height: 200px;">
+        <img alt="LOGO" src="/assets/logo2.png" style="height: 150px; width: 280px; position: relative; ,margin-left: 20px;">
+    <div class="container-fluid" style="margin-top: 0px; margin-left: 30px;">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample5">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+                ながのCAKE管理者サイト
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarEexample5">
+            <% if admin_signed_in? %>
+            <ul class="nav navbar-nav" style="margin-left: 100px;">
+                <li><%= link_to "トップページ",admin_root_path %></li>
+                <li><%= link_to "商品一覧",admin_products_path %></li>
+                <li><%= link_to "会員一覧", admin_members_path %></li>
+                <li><%= link_to "注文履歴一覧", admin_orders_path %></li>
+                <li><%= link_to "ジャンル管理", admin_genres_path %></li>
+                <li><%= link_to "ログアウト" ,destroy_admin_session_path, method: :delete %>
+            </ul>
+            <% end %>
         </div>
     </div>
 </nav>
