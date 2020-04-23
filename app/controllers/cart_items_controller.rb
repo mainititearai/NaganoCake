@@ -23,6 +23,9 @@ class CartItemsController < ApplicationController
 	def update
 		@cart_item = CartItem.find(params[:id])
 		@cart_item.update(cart_item_params)
+		if @cart_item.quantity == 0
+		   @cart_item.destroy
+		end
 		redirect_to member_cart_items_path
 	end
 

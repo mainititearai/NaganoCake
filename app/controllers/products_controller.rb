@@ -3,8 +3,11 @@ class ProductsController < ApplicationController
 	def index
 		@genres = set_genres
 		@products = Product.all
+		@active_product = @genres.active&&@products.active
 		@count = @genres.active&&@products.active.count
 		@name = "商品"
+		@oddnum = 1
+		@evennum = 1
 		if params[:genre_id]
 			@genre = Genre.find(params[:genre_id])
 			@name = @genre.name
