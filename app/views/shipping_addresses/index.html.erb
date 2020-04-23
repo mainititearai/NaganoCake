@@ -32,25 +32,25 @@
                        <div class="form-group row">
                         <div class="col-sm-7">
                         <%= f.label :郵便番号（ハイフンなし） %>
-                        <%= f.text_field :postcode, autocomplete: "postcode", class:"form-control" %>
+                        <%= f.text_field :postcode, autocomplete: "postcode", class:"form-control",placeholder: "5540012" %>
                         </div>
                         </div>
 
                       <div class="form-group row">
                         <div class="col-sm-10">
                         <%= f.label :住所%>
-                        <%= f.text_field :address, autocomplete: "address", class:"form-control" %>
+                        <%= f.text_field :address, autocomplete: "address", class:"form-control",placeholder: "大阪府大阪市此花区" %>
                         </div>
                       </div>
 
                       <div class="form-group row">
                         <div class="col-sm-6">
                         <%= f.label :宛名%>
-                        <%= f.text_field :name, autocomplete: "name", class:"form-control" %>
+                        <%= f.text_field :name, autocomplete: "name", class:"form-control",placeholder: "佐藤太郎" %>
                         </div>
                       </div>
 
-                  <%= f.submit "登録する" ,class:"btn btn-shine" ,:style=>"background-color:#ffb6c1;" %>
+                  <%= f.submit "登録する" ,class: "btn btn-shine" ,:style=>"background-color:#ffb6c1;" %>
                   <% end%>
           </div>
 

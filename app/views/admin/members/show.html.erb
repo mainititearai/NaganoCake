@@ -9,7 +9,13 @@
 		          <tbody>
 		          	<tr>
 		          	  <th>顧客ID</th>
-		          	  <td><%= @member.id %> <span class="label label-info"><%= @member.valid_status_i18n + "会員" %></span></td>
+		          	  <td><%= @member.id %>
+		          	  		<%if @member.valid_status == "active"%>
+		          	  		<span class="label label-info"><%= @member.valid_status_i18n + "会員" %></span>
+		          	  		<% else %>
+		          	  		<span class="label label-danger"><%= @member.valid_status_i18n + "会員" %></span>
+		          	  		<% end %>
+		          	  </td>
 		          	</tr>
 		            <tr>
 		              <th width="20%">氏名</th>

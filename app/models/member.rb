@@ -8,6 +8,8 @@ class Member < ApplicationRecord
   has_many :orders, dependent: :destroy
   has_many :shipping_addresses, dependent: :destroy
 
+  validates :email,:last_name,:first_name,:last_name_kana,:first_name_kana,:address,:postcode,:phone_number, presence: :true
+
   # enumで論理削除機能
   enum valid_status: { active: 0, is_deleted: 1 }
 

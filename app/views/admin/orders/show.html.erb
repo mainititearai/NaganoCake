@@ -1,7 +1,7 @@
 <%= render 'layouts/admins_header' %>
 
 <div class="container">
-	<h3>注文一覧詳細画面</h3>
+	<h3>注文詳細</h3>
 	<br><div class="row">
 		<div class="col-xs-7 col-xs-offset-0">
 
@@ -13,7 +13,9 @@
 		          	</tr>
 		            <tr>
 		              <th class="info class="info"">配送先</th>
-		              <td><%= @order.address %></td>
+		              <td>〒<%= @order.postcode %>
+		              	<br>住所：<%= @order.address %>
+		              	<br>宛名：<%= @order.name %></td>
 		            </tr>
 		            <tr>
 		              <th class="info">支払い方法</th>
