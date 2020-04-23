@@ -23,7 +23,7 @@
 								<td width="15%"><%= (cart_item.product.price*1.1).floor %>円</td>
 								<td width="15%">
 									<%= form_for cart_item, url:member_cart_item_path(cart_item.id), method: :patch do |f| %>
-									<%= f.text_field :quantity, :size=>4 %>
+									<%= f.text_field :quantity, :size=>4,auto_focus: true %>
 									<%= f.submit("変更", class: "btn1 btn-sm btn-primary btn-shine", :style=>"color:white;") %>
 									<% end %>
 								</td>

@@ -31,6 +31,14 @@ class Admin::GenresController < ApplicationController
 		end
 	end
 
+	def destroy
+		genre = Genre.find(params[:id])
+		products = Product.where(genre_id: genre)
+		products.destroy_all
+		genre.destroy
+		redirect_to admin_genres_path
+	end
+
 	private
 
 	def genre_params
