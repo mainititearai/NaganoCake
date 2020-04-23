@@ -11,9 +11,7 @@
 .hover1:hover {
   opacity: 0.6;
 }
-.panel-default{
-	width: 180px !important;
-}
+
 @font-face{
    font-family: "oligopoly";
    src: font-url('/assets/Butchery.ttf');
@@ -28,4 +26,7 @@
 .introduction1{
 	font-family: "oligopoly";
 	font-size: 100px;
+}
+#conta{
+    height: 500px; /* ここの高さはいくつでも構いません */
 }
