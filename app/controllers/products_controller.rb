@@ -2,19 +2,20 @@ class ProductsController < ApplicationController
 
 	def index
 		@genres = set_genres
-		@products = Product.all
-		@active_product = @genres.active&&@products.active
-		@count = @genres.active&&@products.active.count
+		@products = Product.page(params[:page]).per(12)
+		@count = @genres.active&&@products.count
 		@name = "商品"
 		@oddnum = 1
 		@evennum = 1
 		if params[:genre_id]
 			@genre = Genre.find(params[:genre_id])
 			@name = @genre.name
-			@products = @genre.products.order(created_at: :desc).all
+			@roducts = @genre.products.order(created_at: :desc).all
+			@products = products.page(params[:page]).per(12)
 			@count = @products.count
 		else
-			@products = Product.order(created_at: :desc).all
+			products = Product.order(created_at: :desc).all
+			@products = products.page(params[:page]).per(12)
 		end
 	end
 
