@@ -1,6 +1,6 @@
 <%= render 'layouts/members_header' %>
 
-<div class="container table-responsive border-none pull-left">
+<div class="container table-responsive border-none">
 	<div class="row">
 		<div class="col-xs-4">
 			<%= render 'layouts/genre', genres:@genres %>
@@ -8,53 +8,28 @@
 		<div class="col-xs-8 table-responsive border-none">
 			<h2><%= @name %>一覧<small> (全<%= @count %>件)</small></h2>
 			<div class="row table-responsive border-none">
-				<table class="table-responsive border-none">
-					<div class="table-responsive border-none">
-						<tr>
-							<% @products.each do |product| %>
-								<% if product.genre.active?&&product.active? %>
-									<% @oddnum %>
-									<% if @oddnum%2!=0 %>
-										<td>
-											<%= link_to member_product_path(product) do %>
-												<%= attachment_image_tag(product,:image,:fill,150,150, fallback: "no_image.jpg",style: 'border-radius: 30px;margin-right: 10px;' )%>
-											<% end %><br>
-											<%= link_to product.name,member_product_path(product) %><%= @num %>
-											<% if product.is_deleted? %>
-												<p style="color:red;"><%= product.sale_status_i18n %></p>
-											<% else %>
-												<p>¥<%= (product.price*1.1).floor %></p>
-											<% end %>
-										</td>
-									<% end %>
-									<% @oddnum+=1 %>
+					<% @products.each do |product| %>
+						<% if product.genre.active?%>
+							<div class="product col-xs-4">
+								<%= link_to member_product_path(product) do %>
+									<%= attachment_image_tag(product,:image,:fill,150,150, fallback: "no_image.jpg",style: 'border-radius: 30px;margin-right: 10px;' )%>
+								<% end %><br>
+								<%= link_to product.name,member_product_path(product) %><%= @num %>
+								<% if product.is_deleted? %>
+									<p style="color:red;"><%= product.sale_status_i18n %></p>
+								<% else %>
+									<p>¥<%= (product.price*1.1).floor %></p>
 								<% end %>
-							<% end %>
-						</tr>
-						<tr>
-							<% @products.each do |product| %>
-								<% if product.genre.active?&&product.active? %>
-									<% @evennum %>
-									<% if @evennum%2==0 %>
-										<td>
-											<%= link_to member_product_path(product) do %>
-												<%= attachment_image_tag(product,:image,:fill,150,150, fallback: "no_image.jpg",style: 'border-radius: 30px;' )%>
-											<% end %><br>
-											<%= link_to product.name,member_product_path(product) %><%= @num %>
-											<% if product.is_deleted? %>
-												<p style="color:red;"><%= product.sale_status_i18n %></p>
-											<% else %>
-												<p>¥<%= (product.price*1.1).floor %></p>
-											<% end %>
-										</td>
-									<% end %>
-									<% @evennum+=1 %>
-								<% end %>
-							<% end %>
-						</tr>
-					</div>
-				</table>
+							</div>
+						<% end %>
+
+					<% end %>
 			</div>
+			<div class="row">
+				<div class="col-xs-12">
+						<%= paginate @products %>
+					</div>
+				</div>
 		</div>
 	</div>
 </div>
