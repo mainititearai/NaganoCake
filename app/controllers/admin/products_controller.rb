@@ -2,7 +2,8 @@ class Admin::ProductsController < ApplicationController
 	before_action :authenticate_admin!
 
 	def index
-		@products = Product.all
+		products = Product.all
+		@products = products.page(params[:page]).per(15)
 	end
 
 	def show
