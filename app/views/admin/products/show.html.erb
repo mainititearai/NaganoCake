@@ -2,35 +2,34 @@
 
 <div class="container">
 	<div class="row">
+		<h3><strong>商品 詳細画面</strong></h3>
 		<div class="col-xs-5">
-			<h3><strong>商品 詳細画面</strong></h3>
-
-			<br><br><br><br>
-			<%= attachment_image_tag(@product,:image,:fill,200,200, fallback: "no_image.jpg",style: 'border-radius: 30px;') %>
-		</div>
-		<div class="col-xs-4">
 			<h3><%= notice %></h3>
-			<table style="margin-top: 130px;">
+			<table class="table-bordered" style="margin-top: 100px; width: 400px;">
 				<tr style="height:50px;">
-					<th>商品名</th><td><%= @product.name %></td>
+					<th style="background-color:#333333; color:white;">商品名</th><td><%= @product.name %></td>
 				</tr>
 				<tr style="height:50px;">
-					<th>商品説明</th><td><%= @product.introduction %></td>
+					<th style="background-color:#333333; color:white;">商品説明</th><td><%= @product.introduction %></td>
 				</tr>
 				<tr style="height:50px;">
-					<th>ジャンル</th><td><%= @product.genre.name %></td>
+					<th style="background-color:#333333; color:white;">ジャンル</th><td><%= @product.genre.name %></td>
 				</tr>
 				<tr style="height:50px;">
-					<th>税込価格 (税抜価格)</th><td><%= (@product.price*1.1).floor %> (<%= @product.price %>) 円</td>
+					<th style="background-color:#333333; color:white;">税込価格 (税抜価格)</th><td><%= (@product.price*1.1).floor %> (<%= @product.price %>) 円</td>
 				</tr>
 				<tr style="height:50px;">
-					<th>販売ステータス</th><td><%= @product.sale_status_i18n %></td>
+					<th style="background-color:#333333; color:white;">販売ステータス</th><td><%= @product.sale_status_i18n %></td>
 				</tr>
 			</table>
 		</div>
-		<div class="col-xs-3" style="margin-top: 350px;">
-			<%= link_to '編集する',edit_admin_product_path(@product),class: "btn btn-default" %>
+		<div class="col-xs-4" style="margin-top: 140px;">
+			<%= attachment_image_tag(@product,:image,:fill,200,200, fallback: "no_image.jpg",style: 'border-radius: 30px;') %>
+		</div>
+		<div class="col-xs-3" style="margin-top: 370px;">
+			<%= link_to '編集する',edit_admin_product_path(@product),class:"btn btn-shine btn-lg", :style=>"background-color:#ffb6c1; border:none;" %>
 		</div>
 	</div>
 </div>
+
 
