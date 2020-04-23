@@ -1,33 +1,67 @@
 <%= render 'layouts/members_header' %>
-<div class="container">
-	<div class="row">
-		<%= form_with :url => orders_confirm_member_path, local: :true do %>
-		<h3>注文情報入力</h3>
-		<h4>支払い方法</h4>
-		<%= radio_button :order_info, :payment_method,:credit_card,checked: "checked" %>
-		<%= label :order_info, :payment_method,:クレジットカード %><br>
-		<%= radio_button :order_info, :payment_method,:bank_transfer %>
-		<%= label :order_info, :payment_method,:銀行振込 %>
-
-		<h4>お届け先</h4>
-		<%= radio_button :order_info, :address_kind, :self_address,checked: "checked" %>
-		ご自身の住所<br>
-		<%= current_member.postcode %><%= current_member.address %><%= current_member.last_name %><%= current_member.first_name %><br/>
-
-
-        <%= radio_button :order_info, :address_kind, :other_address %>
-        登録済住所から選択<br>
-		<%= collection_select :order_info, :other_address_id, ShippingAddress.all, :id, :postcode_address_name %><br/>
-
-
-        <%= radio_button :order_info, :address_kind, :new_address %>
-        新しいお届け先<br>
-		郵便番号(ハイフンなし)<%= text_field :order_info, :new_postcode %><br/>
-		住所 <%= text_field :order_info, :new_address %><br/>
-		宛名 <%= text_field :order_info, :new_name %><br/>
-
-		<%= submit_tag ("確認画面へ進む"),class: "btn btn-default" %>
-		<% end %>
-	</div>
+<div class="container table-responsive border-none">
+	<%= form_with :url => orders_confirm_member_path, local: :true do %>
+		<div class="row">
+			<div class="col-xs-offset-2 col-xs-8">
+				<h3>注文情報入力</h3>
+				<table class="table-responsive border-none">
+					<tr>
+						<th style="width: 47.3%;">
+						支払い方法
+						</th>
+						<td style="padding-left: 10px;padding-top: 5px;">
+							<%= radio_button :order_info, :payment_method,:credit_card,checked: "checked" %>
+							<%= label :order_info, :payment_method,:クレジットカード %>
+						</td>
+					</tr>
+					<tr>
+						<th></th>
+						<td style="padding-left: 10px;">
+							<%= radio_button :order_info, :payment_method,:bank_transfer %>
+							<%= label :order_info, :payment_method,:銀行振込 %>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-xs-offset-2 col-xs-6">
+				<table class="table-responsive border-none">
+					<tr>
+						<th style="width: 30%;">
+						お届け先
+						</th>
+						<td style="padding-top: 30px;padding-bottom: 10px;">
+							<%= radio_button :order_info, :address_kind, :self_address,checked: "checked" %>
+							<strong>ご自身の住所</strong><br>
+							　<%= current_member.postcode %><%= current_member.address %><%= current_member.last_name %><%= current_member.first_name %>
+						</td>
+					</tr>
+					<tr>
+						<th></th>
+						<td style="padding-bottom: 10px;">
+        					<%= radio_button :order_info, :address_kind, :other_address %>
+        					<strong>登録済住所から選択</strong><br>
+							　<%= collection_select :order_info, :other_address_id, ShippingAddress.all, :id, :postcode_address_name %>
+						</td>
+					</tr>
+					<tr>
+						<th></th>
+						<td style="padding-bottom: 10px;">
+							<%= radio_button :order_info, :address_kind, :new_address %>
+        					<strong>新しいお届け先</strong><br>
+							　郵便番号(ハイフンなし)<%= text_field :order_info, :new_postcode %><br/>
+							　住所 <%= text_field :order_info, :new_address %><br/>
+							　宛名 <%= text_field :order_info, :new_name %>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="col-xs-4 table-responsive border-none" style="margin-top: 150px;text-align:center;">
+				<%= submit_tag ("確認画面へ進む"),class: "btn btn-shine btn-lg", style:"background-color:#ffb6c1;color: #fff;" %>
+			</div>
+		</div>
+	<% end %>
 </div>
 <%= render 'layouts/members_footer' %>
