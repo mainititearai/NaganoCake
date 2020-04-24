@@ -2,18 +2,21 @@ class OrdersController < ApplicationController
 	before_action :cart_items_blank, only: [:new, :confirm]
 
 	def index
-		@orders = current_member.orders.all.reverse_order
+		orders = current_member.orders.all.reverse_order
+		@orders = orders.page(params[:page]).per(10)
 		@sum = 0
 	end
 
 	def show
-		@order = Order.find(params[:id ])
+		order = Order.find(params[:id ])
+		@order = order.page(params[:page]).per(10)
 		@sum = 0
 
 	end
 
 	def new
 		@order = Order.new
+		@shipping_addresses = ShippingAddress.where(member_id:current_member.id)
 	end
 
 	def confirm

@@ -2,7 +2,8 @@ class Admin::ProductsController < ApplicationController
 	before_action :authenticate_admin!
 
 	def index
-		@products = Product.all
+		products = Product.all
+		@products = products.page(params[:page]).per(15)
 	end
 
 	def show
@@ -33,6 +34,12 @@ class Admin::ProductsController < ApplicationController
 		else
 			redirect_to edit_admin_product_path,notice: "空欄があります"
 		end
+	end
+
+	def destroy
+		product = Product.find(params[:id])
+		product.destroy
+		redirect_to admin_products_path
 	end
 
 

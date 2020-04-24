@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
 		if params[:genre_id]
 			@genre = Genre.find(params[:genre_id])
 			@name = @genre.name
-			@roducts = @genre.products.order(created_at: :desc).all
+			products = @genre.products.order(created_at: :desc).all
 			@products = products.page(params[:page]).per(12)
 			@count = @products.count
 		else

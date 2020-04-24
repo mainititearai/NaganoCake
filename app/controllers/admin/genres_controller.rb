@@ -2,7 +2,8 @@ class Admin::GenresController < ApplicationController
 	before_action :authenticate_admin!
 
 	def index
-		@genres = Genre.all.reverse_order
+		genres = Genre.all.reverse_order
+		@genres = genres.page(params[:page]).per(10)
 		@genre = Genre.new
 	end
 
@@ -28,6 +29,14 @@ class Admin::GenresController < ApplicationController
 		else
 			redirect_to edit_admin_genre_path,notice: "空欄があります"
 		end
+	end
+
+	def destroy
+		genre = Genre.find(params[:id])
+		products = Product.where(genre_id: genre)
+		products.destroy_all
+		genre.destroy
+		redirect_to admin_genres_path
 	end
 
 	private

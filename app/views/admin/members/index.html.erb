@@ -1,6 +1,6 @@
 <%= render 'layouts/admins_header' %>
 
-<div class="container">
+<div class="container table-responsive border-none">
 	<h3>会員一覧画面</h3>
 	<div class="row">
 		<div class="col-xs-9 col-xs-offset-1">
@@ -31,7 +31,10 @@
 			</tbody>
 		</table>
 	</div>
-
-
+	<div class="row" style="text-align: center;">
+		<div class="col-xs-12">
+			<%= paginate @members%>
+		</div>
+	</div>
 	</div>
 </div>

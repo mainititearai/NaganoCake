@@ -37,6 +37,11 @@
 				<% end %>
 			</table>
 		</div>
+		<div class="row">
+			<div class="col-xs-12" style="text-align: center;">
+				<%= paginate @orders %>
+			</div>
+		</div>
 	</div>
 </div>
 <%= render 'layouts/members_footer' %>

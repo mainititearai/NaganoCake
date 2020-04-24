@@ -2,7 +2,14 @@ class Admin::OrdersController < ApplicationController
 	before_action :authenticate_admin!
 
 	def index
-		@orders = Order.all.reverse_order
+		member = params[:member_id]
+		if member.blank?
+			orders = Order.all.reverse_order
+		else
+			order = Order.where(member_id: member).all
+			orders = order.all.reverse_order
+		end
+		@orders = orders.page(params[:page]).per(15)
 	end
 
 	def show
