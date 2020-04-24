@@ -2,7 +2,7 @@
 <div class="container">
 	<div class="row">
 		<div class="log-xs-12">
-				<h2>ショッピングカート</h2>
+				<h2 class="title">ショッピングカート</h2>
 				<% if @cart_items.present? %>
 				<p class="text-right">
 					<button type="button" class="btn btn-danger btn-sm btn-shine" ><%= link_to "カートを空にする",cart_items_destroy_all_member_path, method: :delete, :style=>"color:white; text-decoration: none;"%></button></p>

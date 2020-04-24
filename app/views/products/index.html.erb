@@ -6,7 +6,7 @@
 			<%= render 'layouts/genre', genres:@genres %>
 		</div>
 		<div class="col-xs-9 table-responsive border-none">
-			<h2><%= @name %>一覧<small> (全<%= @count %>件)</small></h2>
+			<h2 class="title"><%= @name %>一覧<small> (全<%= @count %>件)</small></h2>
 			<div class="row table-responsive border-none">
 					<% @products.each do |product| %>
 						<% if product.genre.active?%>
