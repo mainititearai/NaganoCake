@@ -16,7 +16,7 @@
 					<th style="background-color:#333333; color:white;">ジャンル</th><td><%= @product.genre.name %></td>
 				</tr>
 				<tr style="height:50px;">
-					<th style="background-color:#333333; color:white;">税込価格 (税抜価格)</th><td><%= (@product.price*1.1).floor %> (<%= @product.price %>) 円</td>
+					<th style="background-color:#333333; color:white;">税込価格 (税抜価格)</th><td>¥<%= (@product.price*1.1).floor %> (<%= @product.price %>)</td>
 				</tr>
 				<tr style="height:50px;">
 					<th style="background-color:#333333; color:white;">販売ステータス</th><td><%= @product.sale_status_i18n %></td>

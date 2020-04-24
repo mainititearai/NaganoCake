@@ -8,8 +8,7 @@ class OrdersController < ApplicationController
 	end
 
 	def show
-		order = Order.find(params[:id ])
-		@order = order.page(params[:page]).per(10)
+		@order = Order.find(params[:id ])
 		@sum = 0
 
 	end
