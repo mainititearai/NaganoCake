@@ -2,10 +2,10 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col-xs-4">
+		<div class="col-xs-3">
 		    <%= render 'layouts/genre', genres:@genres %>
 		</div>
-		<div class="col-xs-4 table-responsive border-none">
+		<div class="col-xs-offset-1 col-xs-4 table-responsive border-none">
 			<%= attachment_image_tag(@product,:image,:fill,200,200, fallback: "no_image.jpg",style: "border-radius: 30px;") %>
 		</div>
 		<div class="col-xs-4 table-responsive border-none">
