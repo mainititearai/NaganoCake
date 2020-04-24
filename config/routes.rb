@@ -19,11 +19,13 @@ end
 # member側のルーティング
 root 'home#top'
 get 'home/about' => "home#about"
+get 'searches' => 'searches#index', as: 'searches'
 devise_for :members, controllers: {
 	sessions:      'members/sessions',
 	passwords:     'members/passwords',
 	registrations: 'members/registrations'
 }
+
 
 resource :member, only: [:edit,:show,:update] do
 	get 'cancel' => 'members#cancel'
@@ -40,6 +42,8 @@ resource :member, only: [:edit,:show,:update] do
 
 
 	resources :shipping_addresses, only: [:index,:edit,:create,:update,:destroy]
+
+
 
 end
 
