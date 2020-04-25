@@ -23,13 +23,17 @@ root 'home#top'
 get 'home/about' => "home#about"
 get 'home/wait' => 'home#wait'
 get 'searches' => 'searches#index', as: 'searches'
+
 devise_for :members, controllers: {
+	confirmations: 'members/confirmations',
 	sessions:      'members/sessions',
 	passwords:     'members/passwords',
 	registrations: 'members/registrations'
 }
 
-
+if Rails.env.development?
+	mount LetterOpenerWeb::Engine, at: "letter_opener"
+end
 
 resource :member, only: [:edit,:show,:update] do
 	get 'cancel' => 'members#cancel'
