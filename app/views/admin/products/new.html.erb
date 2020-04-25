@@ -2,9 +2,9 @@
 	<div class="container table-responsive border-none" style="margin-bottom: 100px;">
 		<h3>商品登録画面</h3>
 		<div class="row">
-
+			<%= form_for @product,:url => {:controller => :products,:action => :create} do |f| %>
 				<div class="col-xs-6" style="margin-top:80px;">
-					<%= form_for @product,:url => {:controller => :products,:action => :create} do |f| %>
+					
 
 					  <div class="form-group row">
 				      <div class="col-sm-5">
@@ -55,6 +55,6 @@
 
 
 
-						<% end %>
+		<% end %>
 	</div>
 </div>

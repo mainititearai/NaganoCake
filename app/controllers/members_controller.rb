@@ -10,10 +10,17 @@ class MembersController < ApplicationController
 
 	def update
 		@member = current_member
-		if @member.update(member_params)
-			redirect_to member_path
+		@email = member_params[:email]
+		if @member.email != @email
+			@member.update(member_params)
+			redirect_to member_path ,notice: '変更確認メールを送信しましたのでご確認ください。'
 		else
-	    	render action: :edit
+
+			if @member.update(member_params)
+				redirect_to member_path
+			else
+	    		render action: :edit
+			end
 		end
 	end
 
