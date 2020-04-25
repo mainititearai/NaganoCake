@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
 
   #アカウント編集後のリダイレクト先
   def after_update_path_for(resource)
-      root_path
+      home_wait_path
   end
 
   	before_action :configure_permitted_parameters, if: :devise_controller?
