@@ -20,9 +20,7 @@
 				<li><%= link_to " Home", root_path, class:"glyphicon glyphicon-home" %></li>
 				<% if member_signed_in? %>
 				<li><%= link_to " MyPage",member_path, class:"glyphicon glyphicon-user" %></li>
-				<li><%= link_to " Sweets", member_products_path ,class:"glyphicon glyphicon-cutlery"
-
-%></li>
+				<li><%= link_to " Sweets", member_products_path ,class:"glyphicon glyphicon-cutlery"%></li>
 				<li><%= link_to " Cart", member_cart_items_path, class:"glyphicon glyphicon-shopping-cart"%></li>
 				<li><%= link_to " Logout", destroy_member_session_path, method: :delete ,class:"glyphicon glyphicon-log-out" %></li>
 
@@ -35,12 +33,12 @@
                 <% end %>
 			</ul>
 
-
+               <div class="navbar-form navbar-right" role="search">
 				<%= form_with url:searches_path, method: :get, local: true do %>
  					 <%= text_field_tag :search %>
 					 <%= submit_tag 'Search', :name => nil%>
 				<% end %>
-				<%= link_to "tobu",searches_path %>
+			</div>
 		</div>
 	</div>
 </nav>

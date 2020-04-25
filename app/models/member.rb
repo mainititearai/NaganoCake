@@ -25,4 +25,9 @@ class Member < ApplicationRecord
      super && self.valid_status == "active"
   end
 
+  def self.search(search)
+    return Member.all unless search
+    Member.where(['last_name LIKE ?', "%#{search}%"])
+  end
+
   end

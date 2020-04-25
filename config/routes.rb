@@ -12,6 +12,7 @@ namespace :admin do
 	resources :products, only: [:index,:new,:create,:show,:edit,:update,:destroy]
 	resources :genres, only: [:index,:create,:edit,:update,:destroy]
 	resources :orders, only: [:index,:show,:update]
+	resources :member_searches, only: [:index]
 	patch 'order_items/:id' => 'orders#item_update'
 	put 'order_items/:id' => 'orders#item_update'
 end
