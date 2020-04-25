@@ -5,7 +5,7 @@
 	<div class="row">
 		<div class="col-xs-6">
 			<h3>注文情報</h3>
-			<table class="table">
+			<table class="table table-responsive">
 				<tr>
 					<th class="product-show-th">注文日</th><td><%= @order.created_at.to_s(:datetime_jp) %></td>
 				</tr>
@@ -24,7 +24,7 @@
 		</div>
 		<div class="col-xs-4" style="margin-left:50px;">
 			<h3>請求情報</h3>
-			<table class="table">
+			<table class="table table-responsive">
 				<% @order.order_items.each do |order_item| %>
 				<% sab_total = (order_item.product.price*1.1*order_item.quantity).floor %>
 				<% @sum += sab_total %>
@@ -44,7 +44,7 @@
 	<div class="row">
 		<div class="col-xs-6">
 			<h3>注文内容</h3>
-			<table class="table">
+			<table class="table table-responsive">
 				<tr>
 					<th class="product-show-th">商品</th><th class="product-show-th">単価(税込)</th><th class="product-show-th">個数</th><th class="product-show-th">小計</th>
 				</tr>
@@ -58,6 +58,31 @@
 				<% end %>
 			</table>
 		</div>
+		<% if @order.payment_method == 'bank_transfer' %>
+			<div class="col-xs-6">
+				<h3>振込先</h3>
+				<table class="table table-responsive">
+					<tr>
+						<th class="product-show-th">金融機関名</th><td>手洗い銀行</td>
+					</tr>
+					<tr>
+						<th class="product-show-th">支店名</th><td>松本駅前支店</td>
+					</tr>
+					<tr>
+						<th class="product-show-th">支店番号</th><td>xxx</td>
+					</tr>
+					<tr>
+						<th class="product-show-th">名義人</th><td>ナガノケーキ</td>
+					</tr>
+					<tr>
+						<th class="product-show-th">口座の種類</th><td>普通</td>
+					</tr>
+					<tr>
+						<th class="product-show-th">口座番号</th><td>xxxxxxx</td>
+					</tr>
+				</table>
+			</div>
+		<% end %>
 	</div>
 </div>
 <%= render 'layouts/members_footer' %>

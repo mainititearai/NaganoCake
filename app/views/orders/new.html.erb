@@ -11,14 +11,14 @@
 						支払い方法
 						</th>
 						<td style="padding-left: 10px;padding-top: 5px;">
-							<%= radio_button :order_info, :payment_method,:credit_card,checked: "checked" %>
+							<%= radio_button :order_info, :payment_method,:credit_card,checked: "checked",title: "btn",id: "a" %>
 							<%= label :order_info, :payment_method,:クレジットカード %>
 						</td>
 					</tr>
 					<tr>
 						<th></th>
 						<td style="padding-left: 10px;">
-							<%= radio_button :order_info, :payment_method,:bank_transfer %>
+							<%= radio_button :order_info, :payment_method,:bank_transfer,title: "btn",id: "b" %>
 							<%= label :order_info, :payment_method,:銀行振込 %>
 						</td>
 					</tr>
@@ -61,10 +61,16 @@
 					</tr>
 				</table>
 			</div>
-			<div class="col-xs-4 table-responsive border-none" style="margin-top: 265px;text-align:center;">
-				<%= submit_tag ("確認画面へ進む"),class: "btn btn-shine btn-lg", style:"background-color:#ffb6c1;color: #fff;" %>
-			</div>
 		</div>
+			<div class="row table-responsive border-none" style="text-align:center;">
+				<div class="text text01">
+					<%= hidden_field_tag :amount,@total %>
+					<script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button text text01" data-key="<%= ENV["PAYJP_PUBLIC_KEY"] %>"></script>
+				</div>
+				<div class="text text02">
+					<%= submit_tag ("確認画面へ進む"),class: "btn btn-shine btn-sm text text02", style:"background-color:#ffb6c1;color: #fff;" %>
+				</div>
+			</div>
 	<% end %>
 </div>
 <%= render 'layouts/members_footer' %>
