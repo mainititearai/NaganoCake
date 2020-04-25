@@ -1,16 +1,24 @@
-<h2>Forgot your password?</h2>
+<%= render 'layouts/members_header' %>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<div class="container">
+	<h2 class="title">パスワード再設定申請フォーム</h2>
+	<div class="row">
+		<div class="col-xs-4 col-xs-offset-1">
+			<p>ご登録時に使用したメールアドレスに専用のパスワード再設定フォームをお送りします。</p>
+			<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+			  <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+			  <div class="field">
+			    <br><%= f.label :ご登録時のメールアドレス, class:"control-label"  %><br />
+			    <%= f.email_field :email, autofocus: true, autocomplete: "email" ,class:"form-control col-xs-2 "%>
+			  </div>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
+			  <div class="actions">
+			    <br><br><br><%= f.submit "メールを送信"  ,class:"btn btn-primary btn-shine col-xs-5 col-xs-offset-2"%>
+			  </div>
+			<% end %>
+		</div>
+	</div>
+</div>
 
-<%= render "members/shared/links" %>
+<%= render "layouts/members_footer" %>
