@@ -6,6 +6,7 @@ devise_for :admins, controllers: {
 	registrations: 'admins/registrations'
 }
 
+
 namespace :admin do
 	root 'home#top'
 	resources :members, only: [:index,:show,:edit,:update]
@@ -20,12 +21,14 @@ end
 # member側のルーティング
 root 'home#top'
 get 'home/about' => "home#about"
+get 'home/wait' => 'home#wait'
 get 'searches' => 'searches#index', as: 'searches'
 devise_for :members, controllers: {
 	sessions:      'members/sessions',
 	passwords:     'members/passwords',
 	registrations: 'members/registrations'
 }
+
 
 
 resource :member, only: [:edit,:show,:update] do
