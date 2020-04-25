@@ -23,7 +23,9 @@ root 'home#top'
 get 'home/about' => "home#about"
 get 'home/wait' => 'home#wait'
 get 'searches' => 'searches#index', as: 'searches'
+
 devise_for :members, controllers: {
+	confirmations: 'members/confirmations',
 	sessions:      'members/sessions',
 	passwords:     'members/passwords',
 	registrations: 'members/registrations'

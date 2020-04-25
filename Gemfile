@@ -87,4 +87,5 @@ gem 'dotenv-rails'
 
 gem 'jquery-turbolinks'
 
-gem ''
+gem "devise-i18n"
+gem "devise-i18n-views"
