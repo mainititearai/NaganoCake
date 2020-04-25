@@ -10,4 +10,7 @@ class HomeController < ApplicationController
 
 	def wait
 	end
+
+	def change_password
+	end
 end
