@@ -29,7 +29,9 @@ devise_for :members, controllers: {
 	registrations: 'members/registrations'
 }
 
-
+if Rails.env.development?
+	mount LetterOpenerWeb::Engine, at: "letter_opener"
+end
 
 resource :member, only: [:edit,:show,:update] do
 	get 'cancel' => 'members#cancel'
