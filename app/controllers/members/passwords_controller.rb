@@ -23,12 +23,12 @@ class Members::PasswordsController < Devise::PasswordsController
 
   # protected
 
-  # def after_resetting_password_path_for(resource)
-  #   super(resource)
-  # end
+   def after_resetting_password_path_for(resource)
+     super(resource),notice: 'パスワードの再設定が完了しました'
+   end
 
   # The path used after sending reset password instructions
-  # def after_sending_reset_password_instructions_path_for(resource_name)
-  #   super(resource_name)
-  # end
+   def after_sending_reset_password_instructions_path_for(resource_name)
+     home_change_password_path
+   end
 end
