@@ -18,6 +18,15 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def after_inactive_sign_up_path_for(resource)
+      home_wait_path
+  end
+
+  #アカウント編集後のリダイレクト先
+  def after_update_path_for(resource)
+      root_path
+  end
+
   	before_action :configure_permitted_parameters, if: :devise_controller?
 
   	protected

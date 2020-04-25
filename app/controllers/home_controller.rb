@@ -7,4 +7,7 @@ class HomeController < ApplicationController
 
 	def about
 	end
+
+	def wait
+	end
 end
