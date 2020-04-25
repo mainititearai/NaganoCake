@@ -14,11 +14,20 @@ class OrdersController < ApplicationController
 	end
 
 	def new
+		cart_items = current_member.cart_items.all
+		@sum = 0
+		cart_items.each do |cart_item|
+			sub_total = (cart_item.product.price*1.1*cart_item.quantity).floor
+			@sum += sub_total
+		end
+		@total = @sum+800
 		@order = Order.new
 		@shipping_addresses = ShippingAddress.where(member_id:current_member.id)
 	end
 
 	def confirm
+		@amount = params[:amount]
+		@pay = params['payjp-token']
 		@order = Order.new
 		@order.payment_method = params[:order_info][:payment_method]
 		@sum = 0
@@ -44,6 +53,15 @@ class OrdersController < ApplicationController
 	end
 
 	def create
+		@pay = params['payjp-token']
+		if @pay.present?
+			Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    		Payjp::Charge.create(
+      		:amount => params[:amount],
+      		:card => params['payjp-token'],
+      		:currency => 'jpy'
+      		)
+    	end
 		@order = Order.new(order_params)
 		@select = params[:select]
 		@member = current_member

@@ -79,3 +79,8 @@ gem "font-awesome-sass", "~> 5.4.1"
 
 gem "kaminari"
 
+gem 'payjp'
+
+gem 'dotenv-rails'
+
+gem 'jquery-turbolinks'

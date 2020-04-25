@@ -83,6 +83,8 @@
 				<%= f.hidden_field :address, :value => @order.address %>
 				<%= f.hidden_field :member_id, :value => current_member.id %>
 				<%= hidden_field_tag :select,@select %>
+				<%= hidden_field_tag :amount,@amount %>
+				<%= hidden_field_tag 'payjp-token',@pay %>
 				<%= f.submit '購入確定',class: "btn btn-lg btn-shine",style:"background-color:#ffb6c1;color: #fff;" %>
 				<%= link_to '戻る', :back, class: "btn btn-lg btn-danger btn-shine",style: "color: #fff;" %>
 			<% end %>

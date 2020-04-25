@@ -5,6 +5,9 @@
 			<img alt="LOGO" src="/assets/logo2.png" style="height: 150px; position: relative;">
 			</div>
 		<h1 class="text-center">ご購入ありがとうございました！</h1>
+		<% if @pay.blank? %>
+			<p style="text-align: center">振込先は注文詳細ページをご覧ください</p>
+		<% end %>
 	</div>
 </div>
 
