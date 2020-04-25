@@ -56,7 +56,16 @@ class Members::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up for inactive accounts.
+  protected
+
    def after_inactive_sign_up_path_for(resource)
      home_wait_path
    end
+
+  protected
+    def after_update_path_for(resource)
+      member_path
+    end
+
+
 end

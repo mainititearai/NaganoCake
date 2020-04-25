@@ -28,7 +28,7 @@ devise_for :members, controllers: {
 	confirmations: 'members/confirmations',
 	sessions:      'members/sessions',
 	passwords:     'members/passwords',
-	registrations: 'members/registrations'
+	:registrations => 'members/registrations'
 }
 
 if Rails.env.development?
