@@ -22,6 +22,7 @@ end
 root 'home#top'
 get 'home/about' => "home#about"
 get 'home/wait' => 'home#wait'
+get 'home/change_password' => 'home#change_password'
 get 'searches' => 'searches#index', as: 'searches'
 
 devise_for :members, controllers: {
