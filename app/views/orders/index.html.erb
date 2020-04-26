@@ -29,7 +29,7 @@
 							<% sab_total = (order_item.product.price*1.1*order_item.quantity).floor %>
 							<% @sum += sab_total %>
 							<% end %>
-							¥<%= @sum+800 %>
+							¥<%= converting_to_jpy(@sum+800) %>
 						</td>
 						<td><%= order.order_status_i18n %></td>
 						<td><%= link_to '表示する',member_order_path(order) %></td>

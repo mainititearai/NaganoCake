@@ -66,6 +66,9 @@
 				<div class="text text01">
 					<%= hidden_field_tag :amount,@total %>
 					<script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button text text01" data-key="<%= ENV["PAYJP_PUBLIC_KEY"] %>"></script>
+					<div class="row">
+						次ページで購入確定ボタンを押していただいたのち、決済完了となります。
+					</div>
 				</div>
 				<div class="text text02">
 					<%= submit_tag ("確認画面へ進む"),class: "btn btn-shine btn-sm text text02", style:"background-color:#ffb6c1;color: #fff;" %>

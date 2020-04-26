@@ -48,9 +48,9 @@
 						      	<tbody>
 						      		<tr>
 						      		<td><%= order_item.product.name %></td>
-						      		<td>¥<%= order_item.price %></td>
+						      		<td>¥<%= converting_to_jpy(order_item.price) %></td>
 						      		<td><%= order_item.quantity %></td>
-						      		<td>¥<%= order_item.price * order_item.quantity %></td>
+						      		<td>¥<%= converting_to_jpy((order_item.price * order_item.quantity).floor) %></td>
 						      		<td><%= form_for(order_item, url:admin_path(order_item), method: :patch) do |f| %>
 						      			<div class="form-group">
 										<%= f.select :production_status,OrderItem.production_statuses.keys.map{|k| [I18n.t("enums.order_item.production_status.#{k}"),k]} ,class:"form-control"%>
@@ -73,7 +73,7 @@
 						          	  		<% sab_total = (order_item.price*order_item.quantity).floor %>
 											<% @sum += sab_total %>
 											<% end %>
-											¥<%= @sum %></td>
+											¥<%= converting_to_jpy(@sum) %></td>
 						          	</tr>
 						            <tr>
 						              <th style="background-color: #333333; color: white;">送料</th>
@@ -82,7 +82,7 @@
 						            <tr>
 						              <th style="background-color: #333333; color: white;">請求合計金額</th>
 						              <td class="text-center">
-											¥<%= (@sum*1.1+800).floor %>
+											¥<%= converting_to_jpy((@sum*1.1+800).floor) %>
 									  </td>
 						            </tr>
 						          </tbody>
