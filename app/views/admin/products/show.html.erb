@@ -7,19 +7,19 @@
 			<p style="color: limegreen;"><strong><%= notice %></strong></p>
 			<table class="table-bordered" style="margin-top: 100px; width: 400px;">
 				<tr style="height:50px;">
-					<th style="background-color:#333333; color:white;">商品名</th><td><%= @product.name %></td>
+					<th width="45%"style="background-color:#333333; color:white; padding-left: 20px;">商品名</th><td style="padding-left: 20px;"><%= @product.name %></td>
+				</tr> padding-left: 30px;
+				<tr style="height:50px;">
+					<th width="45%" style="background-color:#333333; color:white; padding-left: 20px; ">商品説明</th><td style="padding-left: 20px;"><%= @product.introduction %></td>
 				</tr>
 				<tr style="height:50px;">
-					<th style="background-color:#333333; color:white;">商品説明</th><td><%= @product.introduction %></td>
+					<th width="45%" style="background-color:#333333; color:white; padding-left: 20px;">ジャンル</th><td style="padding-left: 20px;"><%= @product.genre.name %></td>
 				</tr>
 				<tr style="height:50px;">
-					<th style="background-color:#333333; color:white;">ジャンル</th><td><%= @product.genre.name %></td>
+					<th width="45%" style="background-color:#333333; color:white; padding-left: 20px;">税込価格 (税抜価格)</th><td style="padding-left: 20px;">¥<%= (@product.price*1.1).floor %> (<%= @product.price %>)</td>
 				</tr>
 				<tr style="height:50px;">
-					<th style="background-color:#333333; color:white;">税込価格 (税抜価格)</th><td>¥<%= (@product.price*1.1).floor %> (<%= @product.price %>)</td>
-				</tr>
-				<tr style="height:50px;">
-					<th style="background-color:#333333; color:white;">販売ステータス</th><td><%= @product.sale_status_i18n %></td>
+					<th width="45%" style="background-color:#333333; color:white; padding-left: 20px;">販売ステータス</th><td style="padding-left: 20px;"><%= @product.sale_status_i18n %></td>
 				</tr>
 			</table>
 		</div>
