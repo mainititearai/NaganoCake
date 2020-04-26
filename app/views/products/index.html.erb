@@ -18,7 +18,7 @@
 								<% if product.is_deleted? %>
 									<p style="color:red;"><%= product.sale_status_i18n %></p>
 								<% else %>
-									<p>¥<%= (product.price*1.1).floor %></p>
+									<p>¥<%= converting_to_jpy((product.price*1.1).floor) %></p>
 								<% end %>
 							</div>
 						<% end %>
