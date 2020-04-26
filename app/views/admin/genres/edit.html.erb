@@ -3,7 +3,7 @@
 <div class="container">
 	<h2>ジャンル編集画面</h2>
 	<div class="row">
-	<p><%= notice %></p>
+	<p style="color: red;"><%= notice %></p>
 		<div class="col-xs-6 col-xs-offset-1">
 		<%= form_for Genre.find(params[:id]), :url => {:controller => :genres, :action => :update} do |f| %>
 			ジャンル

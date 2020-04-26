@@ -27,6 +27,7 @@ class Admin::GenresController < ApplicationController
 		if  @genre.update(genre_params)
 			redirect_to admin_genres_path,notice: "編集完了しました"
 		else
+			@color = 'red'
 			redirect_to edit_admin_genre_path,notice: "空欄があります"
 		end
 	end

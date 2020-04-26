@@ -2,8 +2,8 @@
 <div class="container table-responsive border-none" style="margin-bottom: 100px;">
 	<h3>商品編集画面</h3>
 		<div class="row">
-
 			<div class="col-xs-6" style="margin-top:80px;">
+				<p style="color: red;"><strong><%= notice %></strong></p>
 				<%= form_for @product,:url => {:controller => :products,:action => :update} do |f| %>
 
 				<div class="form-group row">
