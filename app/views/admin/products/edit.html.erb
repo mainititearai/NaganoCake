@@ -53,7 +53,8 @@
 				<%= f.submit '変更を保存', class:"col-sm-4 btn btn-shine btn-lg", :style=>"background-color:#ffb6c1; border:none;"%>
 
 			</div>
-			<div class="col-xs-5" style="margin-top: 500px;">
+			<div class="col-xs-5" style="margin-top: 300px;">
+				<%= attachment_image_tag(@product,:image,:fill,200,200, fallback: "/assets/no_image.png",style: 'border-radius: 30px;margin-bottom: 10px;') %>
 				<%= f.attachment_field :image ,class:"form-control", :style=>"width:250px;" %>
 			</div>
 

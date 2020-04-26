@@ -10,7 +10,6 @@ class Product < ApplicationRecord
   validates :name, presence: true
   validates :introduction, presence: true
   validates :price, presence: true
-  validates :image, presence: true
 
   def self.search(search)
     return Product.all unless search

@@ -20,14 +20,14 @@
 							<% @cart_items.each do |cart_item| %>
 							<tr>
 								<th><%= attachment_image_tag cart_item.product, :image, :fill, 50, 50 %><%= cart_item.product.name %></th>
-								<td width="15%"><%= (cart_item.product.price*1.1).floor %>円</td>
+								<td width="15%"><%= converting_to_jpy((cart_item.product.price*1.1).floor) %>円</td>
 								<td width="15%">
 									<%= form_for cart_item, url:member_cart_item_path(cart_item.id), method: :patch do |f| %>
 									<%= f.text_field :quantity, :size=>4,auto_focus: true %>
 									<%= f.submit("変更", class: "btn1 btn-sm btn-primary btn-shine", :style=>"color:white;") %>
 									<% end %>
 								</td>
-								<td width="15%"><%= (cart_item.product.price*1.1*cart_item.quantity).floor %>円</td>
+								<td width="15%"><%= converting_to_jpy((cart_item.product.price*1.1*cart_item.quantity).floor) %>円</td>
 								<td width="15%"><button type="button" class="btn btn-danger btn-sm btn-shine" ><%= link_to "削除", member_cart_item_path(cart_item), method: :delete, :style=>"color:white; text-decoration: none;"%></button>
 									<% sab_total = (cart_item.product.price*1.1*cart_item.quantity).floor %>
 									<% @sum += sab_total %>
@@ -46,7 +46,7 @@
 							<tr>
 								<th class="text-center"  width="5%" style="background-color: #333333; color: white;">合計金額</th>
 							</tr>
-							<td><%= @sum %>円</td>
+							<td><%= converting_to_jpy(@sum) %>円</td>
 							<tr>
 							</tr>
 						</table>

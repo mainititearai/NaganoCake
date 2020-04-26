@@ -12,7 +12,7 @@
 						<% if product.genre.active?%>
 							<div class="product col-xs-4">
 								<%= link_to member_product_path(product) do %>
-									<%= attachment_image_tag(product,:image,:fill,150,150, fallback: "no_image.jpg",style: 'border-radius: 30px;margin-right: 10px;' )%>
+									<%= attachment_image_tag(product,:image,:fill,150,150, fallback: "/assets/no_image.png",style: 'border-radius: 30px;margin-right: 10px;' )%>
 								<% end %><br>
 								<%= link_to product.name,member_product_path(product) %><%= @num %>
 								<% if product.is_deleted? %>

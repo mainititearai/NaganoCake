@@ -4,15 +4,15 @@
 	<br>
 	<div class="row">
 		<div class="col-xs-7">
-			<table class="table table-bordered">
-				<% @cart_items.each do |cart_item| %>
+			<% @cart_items.each do |cart_item| %>
+				<table class="table table-bordered">
 					<tr>
 						<th style="background-color: #333;color:#fff;">商品名</th>
-						<td><%= attachment_image_tag cart_item.product, :image, :fill, 50, 50,style: "margin-right: 10px;" %><%= cart_item.product.name %></td>
+						<td><%= attachment_image_tag cart_item.product, :image, :fill, 50, 50,fallback: "/assets/no_image.png",style: "margin-right: 10px;" %><%= cart_item.product.name %></td>
 					</tr>
 					<tr>
 						<th style="background-color: #333;color:#fff;">単価(税込)</th>
-						<td><%= (cart_item.product.price*1.1).floor %>円</td>
+						<td><%= converting_to_jpy((cart_item.product.price*1.1).floor) %>円</td>
 					</tr>
 					<tr>
 						<th style="background-color: #333;color:#fff;">数量</th>
@@ -20,13 +20,13 @@
 					</tr>
 					<tr>
 						<th style="background-color: #333;color:#fff;">小計</th>
-						<td><%= (cart_item.product.price*1.1*cart_item.quantity).floor %>円
+						<td><%= converting_to_jpy((cart_item.product.price*1.1*cart_item.quantity).floor) %>円
 						</td>
 						<% sab_total = (cart_item.product.price*1.1*cart_item.quantity).floor %>
 						<% @sum += sab_total %>
 					</tr>
-				<% end %>
-			</table>
+				</table>
+			<% end %>
 		</div>
 	</div>
 	<div class="row">
@@ -38,11 +38,11 @@
 				</tr>
 				<tr>
 					<th style="background-color: #333;color:#fff;">商品合計</th>
-					<td><%= @sum %>円</td>
+					<td><%= converting_to_jpy(@sum) %>円</td>
 				</tr>
 				<tr>
 					<th style="background-color: #333;color:#fff;">請求金額</th>
-					<td><%= 800+@sum %>円</td>
+					<td><%= converting_to_jpy(800+@sum) %>円</td>
 				</tr>
 			</table>
 		</div>
