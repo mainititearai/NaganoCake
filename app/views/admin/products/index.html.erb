@@ -27,7 +27,7 @@
 						<%= link_to product.name,admin_product_path(product) %>
 					</td>
 					<td>
-						¥<%= product.price %>
+						¥<%= converting_to_jpy(product.price) %>
 					</td>
 					<td>
 						<%= product.genre.name %>

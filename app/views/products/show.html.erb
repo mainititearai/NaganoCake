@@ -11,7 +11,7 @@
 		<div class="col-xs-4 table-responsive border-none">
 			<h3><%= @product.name %></h3><br>
 			<p><%= @product.introduction %></p><br>
-			<h3>¥ <%= (@product.price*1.1).floor %><small>(税込)</small></h3>
+			<h3>¥ <%= converting_to_jpy((@product.price*1.1).floor) %><small>(税込)</small></h3>
             <% if member_signed_in? %>
            		<% if @product.active? %>
             		<%= form_for(@cart_item, url:member_cart_items_path) do |f| %>
