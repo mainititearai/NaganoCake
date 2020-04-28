@@ -20,7 +20,7 @@ class Members::RegistrationsController < Devise::RegistrationsController
   # end
 
   # PUT /resource
-  # def update
+  #z def update
   #   super
   # end
 
@@ -65,6 +65,9 @@ class Members::RegistrationsController < Devise::RegistrationsController
   protected
     def after_update_path_for(resource)
       member_path
+    end
+    def update_resource(resource, params)
+      resource.update_without_password(params)
     end
 
 

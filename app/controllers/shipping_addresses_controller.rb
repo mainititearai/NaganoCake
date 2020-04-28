@@ -9,8 +9,11 @@ class ShippingAddressesController < ApplicationController
 	def create
       @shipping_address = ShippingAddress.new(shipping_address_params)
       @shipping_address.member = current_member
-      @shipping_address.save
-      redirect_to member_shipping_addresses_path
+      if @shipping_address.save
+         redirect_to member_shipping_addresses_path ,notice:"配送先登録完了しました"
+      else
+         redirect_to member_shipping_addresses_path ,notice:"空欄があります"
+      end
 	end
 
 	def edit
@@ -21,8 +24,11 @@ class ShippingAddressesController < ApplicationController
 
 	def update
 	  shipping_address = ShippingAddress.find(params[:id])
-	  shipping_address.update(shipping_address_params)
-	  redirect_to member_shipping_addresses_path
+	  if shipping_address.update(shipping_address_params)
+	     redirect_to member_shipping_addresses_path ,notice: "配送先変更完了しました"
+     else
+     	 redirect_to edit_member_shipping_address_url ,notice: "空欄があります"
+     end
 	end
 
 

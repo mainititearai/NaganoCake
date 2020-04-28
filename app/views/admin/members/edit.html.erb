@@ -1,5 +1,9 @@
     <%= render 'layouts/admins_header' %>
-
+      <% if flash[:notice] %>
+        <div class = "flash">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
 <div class="container" style="margin-bottom: 70px;">
     <h3>登録情報編集</h3>
   <div class="row">
