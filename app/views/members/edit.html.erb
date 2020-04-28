@@ -8,7 +8,7 @@
              <%= form_for(@member) do |f| %>
             <!-- エラーメッセージ表示-->
               <% if @member.errors.any? %>
-                <h3><%= @member.errors.count %>error occurrence</h3><!--エラーメッセ-->
+                <h3><%= @member.errors.count %>件のエラーがあります</h3><!--エラーメッセ-->
                 <ul>
                   <% @member.errors.full_messages.each do |message| %>
                   <li><%= message %></li>

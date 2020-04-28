@@ -1,5 +1,10 @@
 <%= render 'layouts/members_header' %>
-
+  <% if notice %>
+    <p class="alert alert-notice"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+    <p class="alert alert-error"><%= alert %></p>
+  <% end %>
 <div class="container">
   <div class="row">
      <div class="text-center">
