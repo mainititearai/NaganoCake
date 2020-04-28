@@ -16,9 +16,6 @@ class Admin::ProductsController < ApplicationController
 
 	def create
 		product = Product.new(product_params)
-		if product.image.nil?
-			# binding.pry
-		end
 		if  product.save
 			redirect_to admin_product_path(product), notice: "商品が登録されました"
 		else
