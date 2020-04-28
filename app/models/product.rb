@@ -11,6 +11,8 @@ class Product < ApplicationRecord
   validates :introduction, presence: true
   validates :price, presence: true
 
+  validates :image,presence: true, on: :update
+
   def self.search(search)
     return Product.all unless search
     Product.where(['name LIKE ?',"%#{search}%"])
